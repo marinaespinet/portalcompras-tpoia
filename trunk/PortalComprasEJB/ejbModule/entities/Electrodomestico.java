@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 @Entity
 public class Electrodomestico extends Articulo {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5496814341194039696L;
 	private String fichaTecnica;
 	
 	public Electrodomestico() {

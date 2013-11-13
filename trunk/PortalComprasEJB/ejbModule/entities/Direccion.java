@@ -6,6 +6,10 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 @Embeddable
 public class Direccion implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9177743829625132856L;
 	private String provincia;
 	private String ciudad;
 	private String calle;

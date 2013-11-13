@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 
 @Entity
 public class Mueble extends Articulo {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8109256227690275037L;
 	private String material;
 	
 	public Mueble() {
