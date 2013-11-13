@@ -3,7 +3,6 @@ package entities;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 @Embeddable
 public class Direccion implements Serializable {
 	/**
