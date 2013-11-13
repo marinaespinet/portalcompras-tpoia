@@ -10,6 +10,10 @@ import javax.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Articulo implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7726705452887822654L;
 	@Id
 	private int codigo;
 	private  String nombre;

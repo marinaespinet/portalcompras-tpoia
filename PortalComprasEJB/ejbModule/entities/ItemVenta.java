@@ -8,6 +8,10 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class ItemVenta implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3380258419215168155L;
 	@Id
 	private int id;
 	@ManyToOne

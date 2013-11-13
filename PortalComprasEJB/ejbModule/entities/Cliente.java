@@ -8,6 +8,10 @@ import javax.persistence.Id;
 @Entity
 public class Cliente implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7492632964540970635L;
 	@Id
 	private int dni;
 	private String nombre;

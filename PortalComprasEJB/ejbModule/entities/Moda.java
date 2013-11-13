@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 
 @Entity
 public class Moda extends Articulo {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5076058167300753617L;
 	private String color;
 	private String talle;
 	

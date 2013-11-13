@@ -10,6 +10,10 @@ import javax.persistence.OneToMany;
 
 public class Venta implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -202495457899650081L;
 	//Duda sobre el tipo de dato de nroVeta y idModulo
 	private String nroVenta;
 	private  String idModulo;
