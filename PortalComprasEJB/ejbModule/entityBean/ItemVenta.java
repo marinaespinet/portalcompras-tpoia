@@ -17,6 +17,7 @@ public class ItemVenta implements Serializable {
 	@ManyToOne
 	private Articulo articulo;
 	private int cantidad;
+	private float importe;
 	
 	
 	public int getId() {
@@ -42,6 +43,14 @@ public class ItemVenta implements Serializable {
 	}
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public float getImporte() {
+		return importe;
+	}
+
+	public void setImporte(float importe) {
+		this.importe = importe;
 	}
 	
 	
