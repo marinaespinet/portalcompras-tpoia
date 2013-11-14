@@ -1,8 +1,9 @@
 package ejb;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
-@Remote
+@Local
 public interface AdministradorArticulo {
 
 }
