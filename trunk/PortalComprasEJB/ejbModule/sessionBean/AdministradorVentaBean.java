@@ -3,11 +3,11 @@ package sessionBean;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.ejb.LocalBean;
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
+import entityBean.Usuario;
 import entityBean.Venta;
-
 
 /**
  * Session Bean implementation class AdministradorVentaBean
@@ -15,19 +15,25 @@ import entityBean.Venta;
 @Stateful
 public class AdministradorVentaBean implements AdministradorVenta {
 
-	/**
-	 * Default constructor.
-	 */
-
+	@EJB
+	private AdministradorArticulo adminArticulo;
+	@EJB
+	private AdministradorNotificaciones adminNotificaciones;
+	
 	private Map<Integer, Integer> articulosCantidad = new HashMap<Integer, Integer>();
 
+	private Usuario usuario;
+
+	public AdministradorVentaBean(Usuario u) {
+		this.usuario = u;
+	}
+
 	public AdministradorVentaBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Venta realizarVenta() {
-		// TODO Auto-generated method stub
+		// consultar bine este paso
 		return null;
 	}
 
@@ -48,8 +54,20 @@ public class AdministradorVentaBean implements AdministradorVenta {
 
 	@Override
 	public void modificarCantidad(int codigo, int cantidad) {
-		articulosCantidad.put(codigo, cantidad);
+		if (cantidad <= 0) {
+			quitarArticulo(codigo);
+		} else {
+			articulosCantidad.put(codigo, cantidad);
+		}
 
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

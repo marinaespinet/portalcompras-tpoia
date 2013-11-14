@@ -20,10 +20,11 @@ public class Venta implements Serializable {
 	private int  coordenadaX;
 	private int coordenadaY;
 	private Date fecha;
-	private float montoTotal;
+	//private float montoTotal;
 	@OneToMany(fetch=FetchType.EAGER)
 	@JoinColumn(name = "venta")
 	private List<ItemVenta> itemsVenta;
+	private String estado;
 	
 	public Venta() {
 		// TODO Auto-generated constructor stub
@@ -69,13 +70,15 @@ public class Venta implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public float getMontoTotal() {
-		return montoTotal;
+	public float getImporteTotal() {
+		float total = 0;
+		for(ItemVenta i: this.itemsVenta){
+			total += i.getImporte();
+		}
+		
+		return total;
 	}
 
-	public void setMontoTotal(float montoTotal) {
-		this.montoTotal = montoTotal;
-	}
 
 	public List<ItemVenta> getItemsVenta() {
 		return itemsVenta;
@@ -83,6 +86,14 @@ public class Venta implements Serializable {
 
 	public void setItemsVenta(List<ItemVenta> itemsVenta) {
 		this.itemsVenta = itemsVenta;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	
