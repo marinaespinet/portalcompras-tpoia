@@ -6,7 +6,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
-public class Cliente implements Serializable{
+public class Usuario implements Serializable{
 
 	/**
 	 * 
@@ -15,11 +15,14 @@ public class Cliente implements Serializable{
 	@Id
 	private int dni;
 	private String nombre;
+	private String mail;
+	private double coordenadaX;
+	private double coordenadaY;
 	@Embedded
 	private Direccion direccion;
 	private String password;
 	
-	public Cliente() {
+	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 	
