@@ -12,14 +12,14 @@ import javax.xml.bind.JAXBContext;
 
 import DTO.ArticuloDTO;
 import fachada.Fachada;
-import fachada.FachadaBean;
 
-/**
- * Message-Driven Bean implementation class for: RecibirNuevoArticulo
- */
-@MessageDriven(activationConfig = {
+@MessageDriven(mappedName = "jms/queue/deposito", activationConfig = {
+		@ActivationConfigProperty(propertyName = "clientId", propertyValue = "depositoClientID"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "jms/queue/deposito"),
+		@ActivationConfigProperty(propertyName = "user", propertyValue = "deposito"),
+		@ActivationConfigProperty(propertyName = "password", propertyValue = "deposito123"),
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/deposito") }, mappedName = "queue/deposito")
+		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
 public class RecibirNuevoArticulo implements MessageListener {
 
 	@EJB
