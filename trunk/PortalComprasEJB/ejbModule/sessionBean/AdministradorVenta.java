@@ -1,18 +1,19 @@
 package sessionBean;
 
+import java.util.List;
+
 import javax.ejb.Local;
 
+import entityBean.Usuario;
 import entityBean.Venta;
 
 @Local
 public interface AdministradorVenta {
-
-	public Venta realizarVenta();
-
-	public void agregarArticulo(int codigo, int cant);
-
-	public void quitarArticulo(int codigo);
-
-	public void modificarCantidad(int codigo, int cantidad);
+	
+	public Venta getVentaByNro(int nro);
+	public Venta cambiarEstado(Venta v, String estado);
+	public List<Venta> getVentasByUsuario(Usuario u);
+	public void registrarVenta(Venta v);
+	
 
 }
