@@ -5,11 +5,13 @@ import java.util.Properties;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
+import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 public class EnviarLog {
 	private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
@@ -24,7 +26,7 @@ public class EnviarLog {
 
 	private static final String PROVIDER_URL = "remote://localhost:4447";
 
-	public static void main(String[] args) throws Exception {
+	public void enviarLog() throws NamingException, JMSException {
 
 		ConnectionFactory connectionFactory = null;
 
