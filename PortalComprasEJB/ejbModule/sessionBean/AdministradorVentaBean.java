@@ -1,10 +1,11 @@
 package sessionBean;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateful;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import entityBean.Usuario;
 import entityBean.Venta;
@@ -12,62 +13,40 @@ import entityBean.Venta;
 /**
  * Session Bean implementation class AdministradorVentaBean
  */
-@Stateful
+@Stateless
+@LocalBean
 public class AdministradorVentaBean implements AdministradorVenta {
 
-	@EJB
-	private AdministradorArticulo adminArticulo;
-	@EJB
-	private AdministradorNotificaciones adminNotificaciones;
+	@PersistenceContext
+	private EntityManager em;
+    /**
+     * Default constructor. 
+     */
+    public AdministradorVentaBean() {
+        // TODO Auto-generated constructor stub
+    }
+	@Override
+	public Venta getVentaByNro(int nro) {
+		return em.find(Venta.class, nro);
+	}
 	
-	private Map<Integer, Integer> articulosCantidad = new HashMap<Integer, Integer>();
-
-	private Usuario usuario;
-
-	public AdministradorVentaBean(Usuario u) {
-		this.usuario = u;
-	}
-
-	public AdministradorVentaBean() {
-	}
-
 	@Override
-	public Venta realizarVenta() {
-		// consultar bine este paso
-		return null;
+	public Venta cambiarEstado(Venta v, String estado) {
+		Venta vp = getVentaByNro(v.getNroVenta());
+		vp.setEstado(estado);
+		em.merge(vp);
+		return vp;
 	}
-
+	
 	@Override
-	public void agregarArticulo(int codigo, int cant) {
-		if (articulosCantidad.containsKey(codigo)) {
-			modificarCantidad(codigo, articulosCantidad.get(codigo) + cant);
-		} else {
-			articulosCantidad.put(codigo, cant);
-		}
+	public List<Venta> getVentasByUsuario(Usuario u) {
+		return em.createQuery(
+				"from Venta v where v.usuario = :usuario").setParameter("usuario", u)
+				.getResultList();
 	}
-
 	@Override
-	public void quitarArticulo(int codigo) {
-		articulosCantidad.remove(codigo);
-
-	}
-
-	@Override
-	public void modificarCantidad(int codigo, int cantidad) {
-		if (cantidad <= 0) {
-			quitarArticulo(codigo);
-		} else {
-			articulosCantidad.put(codigo, cantidad);
-		}
-
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void registrarVenta(Venta v) {
+		em.persist(v);
 	}
 
 }

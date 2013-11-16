@@ -25,6 +25,10 @@ public abstract class Articulo implements Serializable {
 	private String origen;
 	private int posicion;
 
+	public Articulo(int codigo) {
+		this.codigo = codigo;
+	}
+	
 	public Articulo() {
 		// TODO Auto-generated constructor stub
 	}

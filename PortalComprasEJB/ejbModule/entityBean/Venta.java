@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 public class Venta implements Serializable {
@@ -15,7 +16,7 @@ public class Venta implements Serializable {
 	 */
 	private static final long serialVersionUID = -202495457899650081L;
 	//Duda sobre el tipo de dato de nroVeta y idModulo
-	private String nroVenta;
+	private int nroVenta;
 	private  String idModulo;
 	private int  coordenadaX;
 	private int coordenadaY;
@@ -25,18 +26,14 @@ public class Venta implements Serializable {
 	@JoinColumn(name = "venta")
 	private List<ItemVenta> itemsVenta;
 	private String estado;
+	@ManyToOne
+	private Usuario usuario;
 	
 	public Venta() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getNroVenta() {
-		return nroVenta;
-	}
-
-	public void setNroVenta(String nroVenta) {
-		this.nroVenta = nroVenta;
-	}
+	
 
 	public String getIdModulo() {
 		return idModulo;
@@ -94,6 +91,30 @@ public class Venta implements Serializable {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+
+
+	public int getNroVenta() {
+		return nroVenta;
+	}
+
+
+
+	public void setNroVenta(int nroVenta) {
+		this.nroVenta = nroVenta;
+	}
+
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	

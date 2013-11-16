@@ -1,6 +1,7 @@
 package servicios;
 
 import javax.ejb.Stateless;
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 /**
@@ -18,6 +19,11 @@ public class ServidorEstadoEntregaBean implements ServidorEstadoEntrega {
      */
     public ServidorEstadoEntregaBean() {
         // TODO Auto-generated constructor stub
+    }
+    
+    @WebMethod
+    public String notificarEntregaDespacho(int nro){
+    	return null;
     }
 
 }
