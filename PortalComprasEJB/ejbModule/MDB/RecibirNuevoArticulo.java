@@ -19,7 +19,6 @@ public class RecibirNuevoArticulo implements MessageListener {
 	 * Default constructor.
 	 */
 	public RecibirNuevoArticulo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
