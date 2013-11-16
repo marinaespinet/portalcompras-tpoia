@@ -1,11 +1,17 @@
 package MDB;
 
+import java.io.StringReader;
+
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
-import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import javax.xml.bind.JAXBContext;
+
+import DTO.ArticuloDTO;
+import fachada.FachadaBean;
 
 /**
  * Message-Driven Bean implementation class for: RecibirNuevoArticulo
@@ -14,6 +20,9 @@ import javax.jms.TextMessage;
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/deposito") }, mappedName = "queue/deposito")
 public class RecibirNuevoArticulo implements MessageListener {
+
+	@EJB
+	private FachadaBean fachada;
 
 	/**
 	 * Default constructor.
@@ -25,11 +34,15 @@ public class RecibirNuevoArticulo implements MessageListener {
 	 * @see MessageListener#onMessage(Message)
 	 */
 	public void onMessage(Message message) {
-		TextMessage txtmsg = (TextMessage) message;
+		String articuloXML;
+		ArticuloDTO art;
 		try {
-			System.out
-					.println("Recibido Mensaje Deposito!" + txtmsg.getText());
-		} catch (JMSException e) {
+			articuloXML = ((TextMessage) message).getText();
+			art = (ArticuloDTO) JAXBContext.newInstance(ArticuloDTO.class)
+					.createUnmarshaller()
+					.unmarshal(new StringReader(articuloXML));
+			fachada.registrarArticulo(art);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
