@@ -28,7 +28,7 @@ public class RecibirNuevoArticulo implements MessageListener {
 		TextMessage txtmsg = (TextMessage) message;
 		try {
 			System.out
-					.println("Recibido Mensaje Cola Test " + txtmsg.getText());
+					.println("Recibido Mensaje Deposito!" + txtmsg.getText());
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
