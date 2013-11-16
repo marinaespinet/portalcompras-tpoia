@@ -11,5 +11,5 @@ public interface AdministradorNotificaciones {
 	public void notificarBajaArticuloCarrito(Usuario u, int codArt);
 	public void notificarModificacionesArticuloCarrito(Usuario u, int codArt, int cant);
 	public void notificarCambioEstadoVenta(Usuario u, Venta v, String s);
-	
+	public String informarVenta(Usuario u, Venta v);
 }
