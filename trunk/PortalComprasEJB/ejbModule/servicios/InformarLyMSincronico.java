@@ -6,7 +6,7 @@ import DTO.LogDTO;
 import DTO.VentaDTO;
 import entityBean.Config;
 
-public class ConsumidorLogisticaYMonitoreo {
+public class InformarLyMSincronico {
 
 	public static String informarVenta(VentaDTO venta, Config conf) {
 		System.out.println("***********************");
@@ -18,7 +18,6 @@ public class ConsumidorLogisticaYMonitoreo {
 		System.out.println("***********************");
 		System.out.println("Call Over!");
 		return port1.informarVenta(venta.toString());
-		// Please input the parameters instead of 'null' for the upper method!
 	}
 	
 	public static String informarLog(LogDTO logDTO, Config conf) {
@@ -32,6 +31,5 @@ public class ConsumidorLogisticaYMonitoreo {
 		System.out.println("***********************");
 		System.out.println("Call Over!");
 		return port1.informarLog(logDTO.toString());
-		// Please input the parameters instead of 'null' for the upper method!
 	}
 }

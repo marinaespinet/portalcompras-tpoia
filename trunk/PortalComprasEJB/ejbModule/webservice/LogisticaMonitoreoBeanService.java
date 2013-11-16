@@ -46,7 +46,7 @@ public class LogisticaMonitoreoBeanService extends Service {
     public LogisticaMonitoreoBeanService() {
         super(WSDL_LOCATION, SERVICE);
     }
-    
+    /*
     //This constructor requires JAX-WS API 2.2. You will need to endorse the 2.2
     //API jar or re-run wsdl2java with "-frontend jaxws21" to generate JAX-WS 2.1
     //compliant code instead.
@@ -66,7 +66,7 @@ public class LogisticaMonitoreoBeanService extends Service {
     //compliant code instead.
     public LogisticaMonitoreoBeanService(URL wsdlLocation, QName serviceName, WebServiceFeature ... features) {
         super(wsdlLocation, serviceName, features);
-    }
+    }*/
 
     /**
      *
