@@ -17,7 +17,7 @@ public interface Fachada {
 
 	void asignarRanking(String json);
 
-	Articulo registrarArticulo(String xml);
+	Articulo registrarArticulo(ArticuloDTO a);
 	
 	public boolean loguearUser(String dni, String pass);
 	
