@@ -1,8 +1,14 @@
 package sessionBean;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import servicios.ConsumidorLogisticaYMonitoreo;
+import types.EFuncionalidad;
+import DTO.LogDTO;
+import DTO.VentaDTO;
+import entityBean.Config;
 import entityBean.Usuario;
 import entityBean.Venta;
 
@@ -13,9 +19,9 @@ import entityBean.Venta;
 @LocalBean
 public class AdministradorNotificacionesBean implements AdministradorNotificaciones {
 
-    /**
-     * Default constructor. 
-     */
+	@EJB
+	private AdministradorConfiguracion adminConfig;
+	
     public AdministradorNotificacionesBean() {
         // TODO Auto-generated constructor stub
     }
@@ -42,7 +48,20 @@ public class AdministradorNotificacionesBean implements AdministradorNotificacio
 	@Override
 	public void notificarCambioEstadoVenta(Usuario u, Venta v, String s) {
 		// TODO Auto-generated method stub
-		
 	}
+	
+	private String informarLog(String mensajeLog) {
+		//agarro el primero (solo deberia haber 1 a la vez activo, si hay 2 agarro cualquiera
+		Config c = adminConfig.getConfigsByFuncionalidad(EFuncionalidad.venta.toString()).get(0);
+		return ConsumidorLogisticaYMonitoreo.informarLog(new LogDTO(), c);
+	}
+
+	@Override
+	public String informarVenta(Usuario u, Venta v) {
+		//agarro el primero (solo deberia haber 1 a la vez activo, si hay 2 agarro cualquiera
+		Config c = adminConfig.getConfigsByFuncionalidad(EFuncionalidad.venta.toString()).get(0);
+		return ConsumidorLogisticaYMonitoreo.informarVenta(new VentaDTO(), c);
+	}
+	
 
 }
