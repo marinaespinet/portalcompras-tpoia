@@ -11,6 +11,7 @@ import javax.jms.TextMessage;
 import javax.xml.bind.JAXBContext;
 
 import DTO.ArticuloDTO;
+import fachada.Fachada;
 import fachada.FachadaBean;
 
 /**
@@ -22,7 +23,7 @@ import fachada.FachadaBean;
 public class RecibirNuevoArticulo implements MessageListener {
 
 	@EJB
-	private FachadaBean fachada;
+	private Fachada fachada;
 
 	/**
 	 * Default constructor.
