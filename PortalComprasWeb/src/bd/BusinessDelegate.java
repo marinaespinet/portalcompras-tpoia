@@ -2,6 +2,8 @@ package bd;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
 import tipoYEstados.ETipoArticulo;
 import entityBean.Articulo;
 import entityBean.Config;
@@ -10,6 +12,7 @@ import entityBean.ConfigSincronica;
 import entityBean.Usuario;
 import entityBean.Venta;
 
+@Local
 public interface BusinessDelegate {
 
 

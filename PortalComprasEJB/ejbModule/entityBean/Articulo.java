@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -28,7 +30,7 @@ public abstract class Articulo implements Serializable {
 	private String foto;
 	private String origen;
 	private Integer posicion;
-	private ETipoArticulo tipo;
+	private String tipoString;
 	private Timestamp fecha;
 
 	public Articulo(int codigo) {
@@ -105,12 +107,16 @@ public abstract class Articulo implements Serializable {
 	@Transient
 	public abstract String obtenerCaracteristicas();
 
+	
+
+	@Transient
 	public ETipoArticulo getTipo() {
-		return tipo;
+		return ETipoArticulo.valueOf(tipoString);
 	}
 
+	@Transient
 	public void setTipo(ETipoArticulo tipo) {
-		this.tipo = tipo;
+		this.tipoString = tipo.toString();
 	}
 
 	public Timestamp getFecha() {
@@ -119,6 +125,14 @@ public abstract class Articulo implements Serializable {
 
 	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getTipoString() {
+		return tipoString;
+	}
+
+	public void setTipoString(String tipoString) {
+		this.tipoString = tipoString;
 	}
 	
 	
