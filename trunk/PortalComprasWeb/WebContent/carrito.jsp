@@ -9,38 +9,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Portal de Compras</title>
-<link rel="stylesheet" href="css/navbar.css" type="text/css" />
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#main-nav li a.main-link").hover(function(){
-		$("#main-nav li a.close").fadeIn();
-		$("#main-nav li a.main-link").removeClass("active");												 
-		$(this).addClass("active");										 
-		$("#sub-link-bar").animate({
-			height: "40px"					   
-		});
-		$(".sub-links").hide();
-		$(this).siblings(".sub-links").fadeIn();
-	});
-	$("#main-nav li a.close").click(function(){
-		$("#main-nav li a.main-link").removeClass("active");												 									 
-		$(".sub-links").fadeOut();
-		$("#sub-link-bar").animate({
-			height: "10px"					   
-		});		
-		$("#main-nav li a.close").fadeOut();
-	});
-	
-	
-});
 
-</script>
+<jsp:include page="head.jsp" flush="true" />
 
 </head>
 <body>
-<jsp:include page="cab.jsp" flush="true" />
+<jsp:include page="menu.jsp" flush="true" />
 <br><br><br>
 <%
  List<ItemCantidadDTO> items = (List<ItemCantidadDTO>) request.getAttribute("items");
@@ -65,12 +39,12 @@ $(document).ready(function(){
    ItemCantidadDTO it = items.get(i);
  %>
  <tr>
-  <td><%=it.getProducto().getId()%></td>
-  <td><%= it.getProducto().getNombre()%></td>
-  <td><%= it.getProducto().getMarca()%></td>
-  <td><%= it.getProducto().getPrecio()%></td>
-  <td><%= it.getProducto().getBestSellerRanking()%></td>
-  <td><%= it.getProducto().getCategoria().getNombre()%></td>
+  <td><%=it.getArticulo().getCodigo()%></td>
+  <td><%= it.getArticulo().getNombre()%></td>
+  <td><%= it.getArticulo().getMarca()%></td>
+  <td><%= it.getArticulo().getPrecio()%></td>
+  <td><%= it.getArticulo().getRanking()%></td>
+  <td><%= it.getArticulo().getCategoria().getNombre()%></td>
   <td><%=it.getCantidad()%></td>
   <td><a href="ObtenerProductoCarrito?id=<%=it.getProducto().getId()%>">Editar</a><br></td>
 </tr> 

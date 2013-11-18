@@ -42,30 +42,35 @@ public class LoginUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         session = request.getSession();
-        
-        String resultPage = "/login.jsp";
-        
-		String action = request.getParameter("action");
-        if (action == null || action.length() < 1) {
-        	action = "default";
-        }
-        if (action.equals("login")){
-        	try {
-        		String userMail = request.getParameter("usuario");        		
-        		String password = request.getParameter("password");
-			
-				if (facade.loginValido(userMail, password)){
-					Usuario u = facade.obtenerUsuario(userMail);
-					session.setAttribute("usuario", u);
-					session.setAttribute("carrito", carrito);
-					resultPage = "/index.jsp";
-				}else{
-					request.setAttribute("error", "El usuario y password no coinciden!");
-				}			 
-        	} catch (Exception e){
-        		e.printStackTrace();
-        		//TODO: Poner excepcion
-        	}
+        String resultPage;
+		if (session.getAttribute("usuario") != null) {
+			resultPage = "/index.jsp";
+		} else {
+			resultPage = "/login.jsp";
+
+			String action = request.getParameter("action");
+			if (action == null || action.length() < 1) {
+				action = "default";
+			}
+			if (action.equals("login")) {
+				try {
+					String userMail = request.getParameter("usuario");
+					String password = request.getParameter("password");
+
+					if (facade.loginValido(userMail, password)) {
+						Usuario u = facade.obtenerUsuario(userMail);
+						session.setAttribute("usuario", u);
+						session.setAttribute("carrito", carrito);
+						resultPage = "/index.jsp";
+					} else {
+						request.setAttribute("error",
+								"El usuario y password no coinciden!");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					// TODO: Poner excepcion
+				}
+			}
 		}
         
         RequestDispatcher rd = request.getRequestDispatcher(resultPage);

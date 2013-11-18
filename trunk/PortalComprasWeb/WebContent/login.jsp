@@ -33,15 +33,15 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="cab.jsp" flush="true" />
+<jsp:include page="menu.jsp" flush="true" />
  <br><br>
  <br><br>
  <form name="form1" action="LoginUsuario" method="post">
  	<fieldset style="float: left; padding: 2em">
- 	<legend style="color:#FFFFFF;font-family: sans-serif">Ingrese al portal de compras</legend>
+ 	<legend style="color:#FFFFFF;font-family: sans-serif">Login Portal de Compras</legend>
 	<table border="0" cellpadding="0" width="50" bgcolor="#2d2620">
 		<tr>
-			<td><b style="color:#FFFFFF;font-family: sans-serif">Mail: </b></td>
+			<td><b style="color:#FFFFFF;font-family: sans-serif">Dni: </b></td>
 			<td>
 				<input id="usuario" type="text" name="usuario">
 			</td>

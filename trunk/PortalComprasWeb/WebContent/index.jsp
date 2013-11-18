@@ -3,38 +3,9 @@
 <%@page import="entityBean.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"    pageEncoding="ISO-8859-1"%>
 <html>
-<head>
-<title>Portal Compras</title>
-<link rel="stylesheet" href="css/navbar.css" type="text/css" />
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#main-nav li a.main-link").hover(function(){
-		$("#main-nav li a.close").fadeIn();
-		$("#main-nav li a.main-link").removeClass("active");												 
-		$(this).addClass("active");										 
-		$("#sub-link-bar").animate({
-			height: "40px"					   
-		});
-		$(".sub-links").hide();
-		$(this).siblings(".sub-links").fadeIn();
-	});
-	$("#main-nav li a.close").click(function(){
-		$("#main-nav li a.main-link").removeClass("active");												 									 
-		$(".sub-links").fadeOut();
-		$("#sub-link-bar").animate({
-			height: "10px"					   
-		});		
-		$("#main-nav li a.close").fadeOut();
-	});
-	
-	
-});
-
-</script>
-</head>
+<jsp:include page="head.jsp" flush="true" />
 <body>
-<jsp:include page="cab.jsp" flush="true" />
+<jsp:include page="menu.jsp" flush="true" />
 <br><br><br>
 </body>
 </html>

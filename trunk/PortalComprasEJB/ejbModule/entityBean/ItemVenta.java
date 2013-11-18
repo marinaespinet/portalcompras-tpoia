@@ -65,6 +65,11 @@ public class ItemVenta implements Serializable {
 		// TODO Auto-generated method stub
 		return new ItemCantidadDTO(this.articulo.getCodigo(), this.cantidad);
 	}
+	
+	@Override
+	public String toString() {
+		return this.getArticulo().getDescripcion()+ " x "+this.getCantidad() + " ($"+getImporte()+")";
+	}
 
 	
 	

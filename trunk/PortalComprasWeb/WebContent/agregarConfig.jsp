@@ -4,37 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Portal de Compras</title>
-<link rel="stylesheet" href="css/navbar.css" type="text/css" />
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#main-nav li a.main-link").hover(function(){
-		$("#main-nav li a.close").fadeIn();
-		$("#main-nav li a.main-link").removeClass("active");												 
-		$(this).addClass("active");										 
-		$("#sub-link-bar").animate({
-			height: "40px"					   
-		});
-		$(".sub-links").hide();
-		$(this).siblings(".sub-links").fadeIn();
-	});
-	$("#main-nav li a.close").click(function(){
-		$("#main-nav li a.main-link").removeClass("active");												 									 
-		$(".sub-links").fadeOut();
-		$("#sub-link-bar").animate({
-			height: "10px"					   
-		});		
-		$("#main-nav li a.close").fadeOut();
-	});
-	
-	
-});
 
-</script>
+<jsp:include page="head.jsp" flush="true" />
 </head>
 <body>
-<jsp:include page="cab.jsp" flush="true" />
+<jsp:include page="menu.jsp" flush="true" />
     <h1>Nueva Configuración</h1>
     <form action="AgregarConfiguracion" method="post">
 	<fieldset style="float: left; padding: 2em">
@@ -50,8 +24,8 @@ $(document).ready(function(){
 		</tr>
 		<tr>
 		<td><label for="tipo" style="color:#FFFFFF;font-family: sans-serif">Tipo: </label></td>
-		<td><input type="radio" name="tipo" value="sync" checked /> <b style="color:#FFFFFF;font-family: sans-serif">Sync</b>
-			<input type="radio" name="tipo" value="async" /> <b style="color:#FFFFFF;font-family: sans-serif">Async</b>
+		<td><input type="radio" name="tipo" value="sync" checked /> <b style="color:#FFFFFF;font-family: sans-serif">Sicronico</b>
+			<input type="radio" name="tipo" value="async" /> <b style="color:#FFFFFF;font-family: sans-serif">Asincronico</b>
 		</td>
 		</tr>
 		<tr>
