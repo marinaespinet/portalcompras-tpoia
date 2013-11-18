@@ -1,6 +1,9 @@
 package entityBean;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+
+import tipoYEstados.ETipoArticulo;
 
 @Entity
 public class Nino extends Articulo {
@@ -22,5 +25,16 @@ public class Nino extends Articulo {
 		this.edadRecomendada = edadRecomendada;
 	}
 	
+	@Override
+	@Transient
+	public String obtenerCaracteristicas() {
+		return "Edad recomendada: " + edadRecomendada;
+	}
+	
+	@Override
+	@Transient
+	public ETipoArticulo getTipo() {
+		return ETipoArticulo.Nino;
+	}
 	
 }

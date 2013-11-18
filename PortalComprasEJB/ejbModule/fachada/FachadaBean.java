@@ -6,14 +6,19 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import org.json.JSONException;
+
 import sessionBean.AdministradorArticulo;
 import sessionBean.AdministradorConfiguracion;
 import sessionBean.AdministradorNotificaciones;
 import sessionBean.AdministradorUsuario;
-import transformers.Transformer;
+import sessionBean.AdministradorVenta;
+import util.TransformerUtil;
 import DTO.ArticuloDTO;
-import DTO.UsuarioDTO;
 import entityBean.Articulo;
+import entityBean.Config;
+import entityBean.Usuario;
+import entityBean.Venta;
 
 @Stateless
 public class FachadaBean implements Fachada, Serializable {
@@ -26,56 +31,112 @@ public class FachadaBean implements Fachada, Serializable {
 	private AdministradorConfiguracion adminConfiguracion;
 	@EJB
 	private AdministradorArticulo adminArticulo;
+	@EJB
+	private AdministradorVenta adminVenta;
 
 	public FachadaBean() {
 
 	}
 
 	@Override
-	public List<ArticuloDTO> buscarArticulos(String criterio) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Articulo> buscarArticulos(String criterio) {
+		return adminArticulo.buscarArticulos(criterio);
 	}
 
 	@Override
-	public ArticuloDTO buscarArticulo(int codigo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Articulo buscarArticulo(int codigo) {
+		return adminArticulo.buscarArticulo(codigo);
 	}
 
 	@Override
-	public List<ArticuloDTO> getArticulos() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Articulo> getArticulos() {
+		return adminArticulo.getArticulos();
 	}
 
 	@Override
-	public void asignarRanking(String json) {
-		// TODO Auto-generated method stub
-
+	public void asignarRanking(String json) throws JSONException, Exception {
+		adminArticulo.asignarRanking(TransformerUtil
+				.getListBestSellerFromJSON(json));
 	}
 
 	@Override
 	public Articulo registrarArticulo(ArticuloDTO art) {
-		Articulo a = Transformer.toArticulo(art);
+		Articulo a = TransformerUtil.toArticulo(art);
 		a = adminArticulo.registrarArticulo(a);
 		return a;
 	}
 
 	@Override
 	public boolean loguearUser(String dni, String pass) {
-		// TODO Auto-generated method stub
-		return false;
+		return adminUsuario.loguearUser(dni, pass);
 	}
 
 	@Override
-	public UsuarioDTO obtenerUsuario(String dni) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario obtenerUsuario(String dni) {
+		return adminUsuario.obtenerUsuario(dni);
 	}
 
 	@Override
 	public String test() {
 		return "todoOk";
 	}
+
+	@Override
+	public Venta getVentaByNro(int nro) throws Exception {
+		return adminVenta.getVentaByNro(nro);
+	}
+
+	@Override
+	public void cambiarEstadoVenta(int nro) throws Exception {
+		Venta v = adminVenta.getVentaByNro(nro);
+		adminVenta.cambiarEstado(v);
+	}
+
+	@Override
+	public List<Venta> getVentasByUsuario(String dni) {
+		return adminVenta.getVentasByUsuario(adminUsuario.obtenerUsuario(dni));
+	}
+
+	@Override
+	public void registrarVenta(Venta v) throws Exception {
+		adminVenta.registrarVenta(v);
+
+	}
+
+	@Override
+	public List<Articulo> getBestSellers() {
+		return adminArticulo.getBestSellers();
+	}
+
+	@Override
+	public List<Articulo> buscarArticulos(String criterio, String orderBy,
+			boolean asc) {
+		return adminArticulo.buscarArticulos(criterio, orderBy, asc);
+	}
+
+	@Override
+	public List<Config> getConfigs() {
+		return adminConfiguracion.getConfigs();
+	}
+
+	@Override
+	public void addConfig(Config c) {
+		adminConfiguracion.addConfig(c);
+	}
+
+	@Override
+	public Config activarConfig(int c) {
+		return adminConfiguracion.activarConfig(c);
+	}
+
+	@Override
+	public Config desactivarConfig(int c) {
+		return adminConfiguracion.desactivarConfig(c);
+	}
+
+	@Override
+	public List<Config> getConfigsByFuncionalidad(String funcion) {
+		return adminConfiguracion.getConfigsByFuncionalidad(funcion);
+	}
+
 }

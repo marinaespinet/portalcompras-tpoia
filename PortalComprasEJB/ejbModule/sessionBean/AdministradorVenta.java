@@ -10,10 +10,11 @@ import entityBean.Venta;
 @Local
 public interface AdministradorVenta {
 	
-	public Venta getVentaByNro(int nro);
-	public Venta cambiarEstado(Venta v, String estado);
+	public Venta getVentaByNro(int nro) throws Exception;
+	public void cambiarEstado(Venta v) throws Exception;
 	public List<Venta> getVentasByUsuario(Usuario u);
-	public void registrarVenta(Venta v);
+	public void registrarVenta(Venta v) throws Exception;
+	public Venta modificarVenta(Venta v) throws Exception;
 	
 
 }

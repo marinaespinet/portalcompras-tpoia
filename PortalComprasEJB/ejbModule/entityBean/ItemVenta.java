@@ -5,6 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+
+import DTO.ItemCantidadDTO;
 
 @Entity
 public class ItemVenta implements Serializable {
@@ -17,7 +20,6 @@ public class ItemVenta implements Serializable {
 	@ManyToOne
 	private Articulo articulo;
 	private int cantidad;
-	private float importe;
 	
 	
 	public int getId() {
@@ -32,6 +34,14 @@ public class ItemVenta implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	
+	public ItemVenta(Articulo articulo, int cantidad) {
+		super();
+		this.articulo = articulo;
+		this.cantidad = cantidad;
+	}
+
 	public Articulo getArticulo() {
 		return articulo;
 	}
@@ -45,13 +55,17 @@ public class ItemVenta implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public float getImporte() {
-		return importe;
+	@Transient
+	public double getImporte() {
+		return this.articulo.getPrecio() * this.cantidad;
 	}
 
-	public void setImporte(float importe) {
-		this.importe = importe;
+	@Transient
+	public ItemCantidadDTO getDTO() {
+		// TODO Auto-generated method stub
+		return new ItemCantidadDTO(this.articulo.getCodigo(), this.cantidad);
 	}
+
 	
 	
 }

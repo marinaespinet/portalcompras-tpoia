@@ -13,7 +13,7 @@ public class Usuario implements Serializable{
 	 */
 	private static final long serialVersionUID = 7492632964540970635L;
 	@Id
-	private int dni;
+	private String dni;
 	private String nombre;
 	private String mail;
 	private double coordenadaX;
@@ -26,10 +26,11 @@ public class Usuario implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getDni() {
+
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getNombre() {

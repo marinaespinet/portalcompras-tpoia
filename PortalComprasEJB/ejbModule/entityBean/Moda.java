@@ -1,6 +1,9 @@
 package entityBean;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+
+import tipoYEstados.ETipoArticulo;
 
 @Entity
 public class Moda extends Articulo {
@@ -31,5 +34,15 @@ public class Moda extends Articulo {
 		this.talle = talle;
 	}
 	
+	@Override
+	@Transient
+	public String obtenerCaracteristicas() {
+		return "Color: " + color +", \n Talle: "+talle;
+	}
+	@Override
+	@Transient
+	public ETipoArticulo getTipo() {
+		return ETipoArticulo.Moda;
+	}
 	
 }

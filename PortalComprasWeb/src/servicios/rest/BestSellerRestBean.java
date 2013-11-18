@@ -33,10 +33,10 @@ public class BestSellerRestBean {
 	
 	public String informarMasVendidos(String ranking) {
 		try {
-			//facade.asignarRanking(ranking);
-			return "{\"response\":\"OK\", \"mensaje\":\"Actualizacion exitosa\"}";
+			fachada.asignarRanking(ranking);
+			return "{\"estado\":\"OK\", \"mensaje\":\"Actualizacion exitosa\"}";
 		} catch (Exception e) { 
-			return "{\"response\":\"ERROR\", \"mensaje\":\"" + e.getMessage()
+			return "{\"estado\":\"ERROR\", \"mensaje\":\"" + e.getMessage()
 					+ "\"}";
 		}
 	}

@@ -1,0 +1,75 @@
+body { 
+background-color:#FFFFFF; 
+font-family:Verdana,Helvetica,Arial,sans-serif; 
+border:0px solid;
+font-weight:normal; 
+color:#000000; 
+font-size:9px; 
+} 
+a:active, a:link, a:visited {
+font-family: Verdana,Helvetica,Arial,sans-serif; 
+font-size: 9px; 
+font-color: #CC0000; 
+font-weight: bold; 
+text-decoration: none; 
+}
+a:hover { 
+font-size: 9px; 
+font-weight: normal; 
+text-decoration: none; 
+}
+blockquote {
+font-size: 9px; 
+font-weight: normal; 
+padding: 0px; 
+border: 0px ; 
+}
+div {
+font-size: 9px; 
+font-weight: normal; 
+text-align: none; 
+padding: 0px; 
+border: 0px ; 
+}
+p {
+font-weight: normal; 
+text-align: none; 
+padding: 0px; 
+border: 0px ; 
+}
+span {
+font-weight: normal; 
+text-align: none; 
+padding: 0px; 
+border: 0px ; 
+}
+td {
+font-family: ; 
+font-weight: ; 
+}
+ol {
+font-weight: normal; 
+font-size: 9px; 
+}
+ul {
+font-weight: normal; 
+font-size: 9px; 
+}
+input {
+font-weight: normal; 
+padding: 0px; 
+border: 0px ; 
+}
+select {
+font-weight: normal; 
+font-size: 9px; 
+}
+textarea {
+font-weight: normal; 
+font-size: 9px; 
+padding: 0px; 
+border: 0px ; 
+}
+hr {
+width: 100%; 
+}

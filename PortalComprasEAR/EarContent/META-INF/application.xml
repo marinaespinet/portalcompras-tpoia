@@ -8,6 +8,8 @@
     <web>
       <web-uri>PortalComprasWeb.war</web-uri>
       <context-root>PortalWeb</context-root>
+      
     </web>
   </module>
+  <library-directory>lib</library-directory>
 </application>

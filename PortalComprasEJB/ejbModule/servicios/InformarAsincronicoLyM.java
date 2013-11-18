@@ -5,28 +5,34 @@ import java.util.Properties;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
+
+import org.jboss.logging.Logger;
+
+import util.TransformerUtil;
+import DTO.LogDTO;
+import entityBean.ConfigAsincronica;
 
 public class InformarAsincronicoLyM {
+	
+	private static Logger logger = Logger.getLogger(InformarAsincronicoLyM.class);
+	
 	private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
 
 	private static final String DEFAULT_DESTINATION = "jms/queue/log";
 
 	private static final String DEFAULT_USERNAME = "log";
 
-	private static final String DEFAULT_PASSWORD = "log123";
+	private static final String DEFAULT_PASSWORD = "log1234";
 
 	private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
 
-	private static final String PROVIDER_URL = "remote://localhost:4447";
 
-	public void enviarLog() throws NamingException, JMSException {
+	public static void informarLog(LogDTO log, ConfigAsincronica conf) throws Exception {
 
 		ConnectionFactory connectionFactory = null;
 
@@ -37,6 +43,25 @@ public class InformarAsincronicoLyM {
 		MessageProducer producer = null;
 
 		Destination destination = null;
+		
+		String host = conf.getIp();
+		String port = conf.getPuerto();
+    	String user = conf.getUser();
+		String cola = conf.getNombre();
+		String pass = conf.getPassword();
+		
+		if(user == null ){
+			user = DEFAULT_USERNAME;
+		}
+		if(pass == null){
+			pass = DEFAULT_PASSWORD;
+		}
+    	if(cola==null){
+    		cola = DEFAULT_DESTINATION;
+    	}
+    	
+ 
+    	  
 
 		Context context = null;
 
@@ -44,17 +69,12 @@ public class InformarAsincronicoLyM {
 
 		final Properties env = new Properties();
 
-		env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
 
-		env.put(Context.PROVIDER_URL,
-				System.getProperty(Context.PROVIDER_URL, PROVIDER_URL));
-
-		env.put(Context.SECURITY_PRINCIPAL,
-				System.getProperty("username", DEFAULT_USERNAME));
-
-		env.put(Context.SECURITY_CREDENTIALS,
-				System.getProperty("password", DEFAULT_PASSWORD));
-
+		env.put(Context.PROVIDER_URL, System.getProperty(Context.PROVIDER_URL, "remote://" +
+  			  host + ":" + port));
+  	  env.put(Context.SECURITY_PRINCIPAL, System.getProperty("username", user));
+  	  env.put(Context.SECURITY_CREDENTIALS, System.getProperty("password", pass));
+  	  env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
 		context = new InitialContext(env);
 
 		// Perform the JNDI lookups
@@ -66,15 +86,15 @@ public class InformarAsincronicoLyM {
 				.lookup(connectionFactoryString);
 
 		String destinationString = System.getProperty("destination",
-				DEFAULT_DESTINATION);
+				cola);
 
 		destination = (Destination) context.lookup(destinationString);
 
 		// Create the JMS connection, session, producer, and consumer
 
 		connection = connectionFactory.createConnection(
-				System.getProperty("username", DEFAULT_USERNAME),
-				System.getProperty("password", DEFAULT_PASSWORD));
+				System.getProperty("username", user),
+				System.getProperty("password", pass));
 
 		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
@@ -86,7 +106,9 @@ public class InformarAsincronicoLyM {
 
 		TextMessage message = session.createTextMessage();
 
-		message.setText("xml");
+		String xml = TransformerUtil.getXML(log);
+		logger.info("logXML : "+xml);
+		message.setText(xml);
 
 		// enviar el mensaje
 
