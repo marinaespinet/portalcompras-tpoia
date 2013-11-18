@@ -3,43 +3,19 @@
     pageEncoding="ISO-8859-1"%>
 <html>
 <head>
-<title>Portal de Compras</title>
-<link rel="stylesheet" href="css/navbar.css" type="text/css" />
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#main-nav li a.main-link").hover(function(){
-		$("#main-nav li a.close").fadeIn();
-		$("#main-nav li a.main-link").removeClass("active");												 
-		$(this).addClass("active");										 
-		$("#sub-link-bar").animate({
-			height: "40px"					   
-		});
-		$(".sub-links").hide();
-		$(this).siblings(".sub-links").fadeIn();
-	});
-	$("#main-nav li a.close").click(function(){
-		$("#main-nav li a.main-link").removeClass("active");												 									 
-		$(".sub-links").fadeOut();
-		$("#sub-link-bar").animate({
-			height: "10px"					   
-		});		
-		$("#main-nav li a.close").fadeOut();
-	});
-	
-	
-});
-
-</script>
+<jsp:include page="head.jsp" flush="true" />
 </head>
 <body>
-<jsp:include page="menu.jsp" flush="true" />
+<jsp:include page="menu.jsp"/>
  <br><br>
  <br><br>
+ <table width="900px" align="center">
+ <tr>
+ <td>
  <form name="form1" action="LoginUsuario" method="post">
  	<fieldset style="float: left; padding: 2em">
  	<legend style="color:#FFFFFF;font-family: sans-serif">Login Portal de Compras</legend>
-	<table border="0" cellpadding="0" width="50" bgcolor="#2d2620">
+	<table align="center" border="0" cellpadding="0" width="50" bgcolor="#2d2620">
 		<tr>
 			<td><b style="color:#FFFFFF;font-family: sans-serif">Dni: </b></td>
 			<td>
@@ -56,7 +32,7 @@ $(document).ready(function(){
 			<td></td>
 			<td>
 				<input type="hidden" name="action" value="login">
-				<input type="SUBMIT" value="Ingresar" style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;">
+				<input type="submit" value="Ingresar" style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;">
 			</td>
 		</tr>
 	</table>
@@ -70,7 +46,9 @@ $(document).ready(function(){
 	
 	</fieldset>
 </form>
-
+</td>
+</tr>
+</table>
 
 </body>
 </html>

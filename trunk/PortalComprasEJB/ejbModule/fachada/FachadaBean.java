@@ -19,6 +19,7 @@ import util.TransformerUtil;
 import DTO.ArticuloDTO;
 import entityBean.Articulo;
 import entityBean.Config;
+import entityBean.Direccion;
 import entityBean.Usuario;
 import entityBean.Venta;
 
@@ -37,7 +38,16 @@ public class FachadaBean implements Fachada, Serializable {
 	private AdministradorVenta adminVenta;
 
 	public FachadaBean() {
-
+		Usuario u = new Usuario();
+		u.setAdministrador(true);
+		u.setCoordenadaX(123124423);
+		u.setCoordenadaY(123124213);
+		u.setDireccion(new Direccion("prov", "ciud", "calle", 1,"depto"));
+		u.setDni("1234");
+		u.setMail("sfsa@asdas.com");
+			u.setNombre("Hernan Escola");
+			u.setPassword("1234");
+		adminUsuario.registrar(u);
 	}
 
 	@Override

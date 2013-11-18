@@ -19,6 +19,18 @@ public class Direccion implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public Direccion(String provincia, String ciudad, String calle, int piso,
+			String dpto) {
+		super();
+		this.provincia = provincia;
+		this.ciudad = ciudad;
+		this.calle = calle;
+		this.piso = piso;
+		this.dpto = dpto;
+	}
+
+
 	public String getProvincia() {
 		return provincia;
 	}

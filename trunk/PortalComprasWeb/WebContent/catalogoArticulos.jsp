@@ -22,63 +22,20 @@
 </script>
 </head>
 <body>
-<div id="sub-link-bar"> </div>
-<!-- End sub-link-bar -->
-<div id="wrap">
-  <div id="main-handle">
-    <div class="roundfg">
-      <ul id="main-nav">
-        <li><a class="main-link" href="index.jsp">Inicio</a>
-        	<ul class="sub-links">
-            	<li><a href="index.jsp">Inicio</a></li>
-            </ul>
-        </li>
-        <li><a class="main-link" href="ObtenerTodosArticulos?action=listar">Articulos</a>
-          <ul class="sub-links">
-            <li><a href="ObtenerTodosProductos?cat=moda&action=listar" title="Ver todos los articulos de Moda">Moda</a> </li>
-            <li><a href="ObtenerTodosProductos?cat=electro&action=listar" title="Ver todos los articulos de Electro">Electro</a> </li>
-            <li><a href="ObtenerTodosProductos?cat=niños&action=listar" title="Ver todos los articulos de Niños">Niños</a> </li>
-            <li><a href="ObtenerTodosProductos?cat=muebles&action=listar" title="Ver todos los articulos de Muebles">Muebles</a> </li>            
-          </ul>
-        </li>
-        <li><a class="main-link" href="ObtenerBestSellers">Mas Vendidos</a>
-          <ul class="sub-links">
-            <li ><a href="ObtenerBestSellers" title="Best sellers">Ver articulos mas vendidos</a> </li>            
-          </ul>
-        </li>
-        <li><a class="main-link" href="LoginUsuario">Usuario</a>
-          <ul class="sub-links">
-          	<% if (session.getAttribute("usuario")==null) { %>
-				<li><a href="LoginUsuario" title="Login">Login</a> </li>
-			<%}else{ %>	 
-				<li><a href="LogoutUsuario" title="Logout">Logout</a> </li>
-				<li><a href="Carrito" title="Carrito">Ver Carrito</a> </li>
-				<li><a href="TodosLosPedidos" title="Pedidos">Historial de Pedidos</a> </li>
-            <%} %>            
-          </ul>
-        </li>
-        <li><a class="main-link" href="ObtenerConfiguracion">Configuracion</a>
-        	<ul class="sub-links">
-            	<li><a href="ObtenerConfiguracion" title="Config">Ver Configuraciones</a></li>
-            	<li><a href="agregarConfig.jsp" title="Agregar Config">Agregar Configuracion</a></li> 
-            </ul>
-        </li>
-         <li><a class="close" title="Click para cerrar" href="#">X</a></li>
-      </ul>
-    </div>
-    <!-- End roundfg -->
-    <b class="round"> <b class="round5"></b> <b class="round4"></b> <b class="round3"></b> <b class="round2"><b></b></b> <b class="round1"><b></b></b></b> </div>
-  <!-- End main-handle-->
+
+    <jsp:include page="menu.jsp"/>
   <br><br><br>
     <h1>Articulos</h1>
 	<form action="BusquedaArticulo" method="post">
 	<fieldset style="float: left; padding: 2em">
 	<legend style="color:#FFFFFF;font-family: sans-serif">Ingrese datos del articulo</legend>
-	<table border="0" cellpadding="0" width="50" bgcolor="#2d2620">
+	<table border="0" cellpadding="0" width="100" bgcolor="#444444">
 	<tr>
-	<td><label for="Buscar" style="color:#FFFFFF;font-family: sans-serif">Buscar :</label></td>
+	<td ><label for="Buscar" style="color:#FFFFFF;font-family: sans-serif">Buscar :</label></td>
 	<td><input type="text" name="criterio" value="" maxlength="100" /></td>
+		
 	</tr>
+	<tr><td><input type="submit" name="buscar" value="" maxlength="100" /></td></tr>
 	</table>
 	</fieldset>
 	</form>

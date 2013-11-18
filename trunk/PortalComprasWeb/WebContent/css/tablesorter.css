@@ -1,7 +1,7 @@
 /* tables */
 table.tablesorter {
 	font-family:arial;
-	background-color: #CDCDCD;
+	background-color: #777777;
 	margin:10px 0pt 15px;
 	font-size: 8pt;
 	width: 100%;
@@ -20,7 +20,7 @@ table.tablesorter thead tr .header {
 	cursor: pointer;
 }
 table.tablesorter tbody td {
-	color: #3D3D3D;
+	color: #666666;
 	padding: 4px;
 	background-color: #FFF;
 	vertical-align: top;
@@ -35,5 +35,5 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url(desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #8dbdd8;
+background-color: #006699;
 }

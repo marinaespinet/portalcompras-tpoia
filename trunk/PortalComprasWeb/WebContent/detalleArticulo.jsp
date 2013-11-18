@@ -30,7 +30,7 @@ function soloNumeros(evt){
 
 </head>
 <body>
-<jsp:include page="menu.jsp" flush="true" />
+<jsp:include page="menu.jsp"/>
 <br><br><br>
 <h1>Detalle del Articulo</h1>
 <form name="form1" action="Carrito" method="POST" onsubmit="return validar();">

@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,6 +27,8 @@ public class Venta implements Serializable {
 	 */
 	private static final long serialVersionUID = -202495457899650081L;
 	//Duda sobre el tipo de dato de nroVeta y idModulo
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int nroVenta;
 	private  String idModulo;
 	private double  coordenadaX;

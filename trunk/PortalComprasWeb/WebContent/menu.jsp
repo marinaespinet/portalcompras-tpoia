@@ -4,6 +4,7 @@
 <%@page import="entityBean.*"%>
 <%@page import="java.util.List"%>
 
+<%	Usuario u = (Usuario) session.getAttribute("usuario");%> 
 <html>
 <body>
 
@@ -33,21 +34,25 @@
         </li>
         <li><a class="main-link" href="LoginUsuario">Usuario</a>
           <ul class="sub-links">
-          	<% if (session.getAttribute("usuario")==null) { %>
+          	<% if (u==null) { %>
 				<li><a href="LoginUsuario" title="Login">Login</a> </li>
-			<%}else{ %>	 
+			<%} if(u!=null){ %>	 
 				<li><a href="LogoutUsuario" title="Logout">Logout</a> </li>
+				<% }%>
+			</ul>
+			<% if (u!=null) { %>
 				<li><a href="Carrito" title="Carrito">Ver Carrito</a> </li>
 				<li><a href="TodasLasVentas" title="Ventas">Historial de Ventas</a> </li>
-				<% if (((Usuario)session.getAttribute("usuario")).isAdministrador()) { %>
+				<% if (u.isAdministrador()) { %>
 		        <li><a class="main-link" href="ObtenerConfiguracion">Configuracion</a>
 		        	<ul class="sub-links">
 		            	<li><a href="ObtenerConfiguracion" title="Config">Ver Configuraciones</a></li>
 		            	<li><a href="agregarConfig.jsp" title="Agregar Config">Agregar Configuracion</a></li>
 		            </ul>
 		        </li>
-            <%} }%>           
-          </ul>
+            <% }
+			}%>           
+          
         </li>
          <li><a class="close" title="Click para cerrar" href="#">X</a></li>
       </ul>
@@ -55,8 +60,7 @@
     <!-- End roundfg -->
     <b class="round"> <b class="round5"></b> <b class="round4"></b> <b class="round3"></b> <b class="round2"><b></b></b> <b class="round1"><b></b></b></b> </div>
   <!-- End main-handle-->
-    <% if (session.getAttribute("usuario")!=null) { 
-    		Usuario u = (Usuario) session.getAttribute("usuario");%>
+    <% if (u!=null) { %>
     		<b style="color:#FFFFFF;font-family: sans-serif; text-align:right; font-size: x-small;">Usuario: <%=u.getNombre() %></b>
    	<% } %>
  </div>

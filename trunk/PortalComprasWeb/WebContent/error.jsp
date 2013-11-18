@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 </head>
 <body>
-<jsp:include page="menu.jsp" flush="true" />
+<jsp:include page="menu.jsp"/>
 <br><br><br>
 <h1>Página de Error</h1>
 <% String error = (String)request.getAttribute("error"); %>

@@ -32,7 +32,7 @@
 
 </head>
 <body>
-	<jsp:include page="menu.jsp" flush="true" />
+	<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>

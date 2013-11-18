@@ -33,7 +33,7 @@ public class AdministradorConfiguracionBean implements AdministradorConfiguracio
 
 	@Override
 	public void addConfig(Config c) {
-		em.persist(em);
+		em.persist(c);
 	}
 
 	@Override
