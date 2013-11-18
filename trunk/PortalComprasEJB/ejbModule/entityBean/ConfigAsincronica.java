@@ -1,6 +1,7 @@
 package entityBean;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class ConfigAsincronica extends Config{
@@ -19,6 +20,12 @@ public class ConfigAsincronica extends Config{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@Override
+	@Transient
+	public boolean isSincronico() {
+		return false;
 	}
 	
 	

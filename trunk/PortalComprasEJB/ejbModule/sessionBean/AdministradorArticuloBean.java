@@ -6,10 +6,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.RollbackException;
 
+import DTO.BestSellerDTO;
 import entityBean.Articulo;
-
-
 
 /**
  * Session Bean implementation class AdministradorArticuloBean
@@ -18,14 +18,14 @@ import entityBean.Articulo;
 public class AdministradorArticuloBean implements AdministradorArticulo {
 
 	@PersistenceContext
-    private EntityManager em;
-	
-    /**
-     * Default constructor. 
-     */
-    public AdministradorArticuloBean() {
-        // TODO Auto-generated constructor stub
-    }
+	private EntityManager em;
+
+	/**
+	 * Default constructor.
+	 */
+	public AdministradorArticuloBean() {
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Articulo registrarArticulo(Articulo a) {
@@ -34,31 +34,59 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 	}
 
 	@Override
-	public List<Articulo> buscarArticulos(String criterio) {
-		if(criterio==null){
-			
+	public List<Articulo> buscarArticulos(String criterio, String orderBy, boolean asc) {
+		if (criterio == null) {
+
 		}
 		String jpql = "from Articulo a";
 		if (criterio != null && !criterio.trim().isEmpty()) {
-			jpql+=" where a.descripcion like :criterio OR a.nombre like :criterio " +
-			"OR a.origen like :criterio OR a.marca like :criterio";
+			jpql += " where a.descripcion like :criterio OR a.nombre like :criterio "
+					+ "OR a.origen like :criterio OR a.marca like :criterio ";
 		}
-		 Query q = em.createQuery("from Articulo a where a.descripcion like :criterio OR a.nombre like :criterio " +
-				"OR a.origen like :criterio OR a.marca like :criterio");
-		 if (criterio != null) {
-			 q.setParameter("criterio", "%"+criterio+"%");
-		 }
-		return q.getResultList();
 		
+		if(orderBy!=null){
+			jpql+= " ORDER BY ";
+			jpql+= ", a." +orderBy + " ";
+			
+			if(!asc){
+				jpql += "desc ";
+			}
+		}
+		Query q = em
+				.createQuery(jpql);
+		if (criterio != null) {
+			q.setParameter("criterio", "%" + criterio + "%");
+		}
+		return q.getResultList();
+
+	}
+	
+	@Override
+	public List<Articulo> buscarArticulos(String criterio) {
+		return buscarArticulos(criterio, null, true);
+
 	}
 
 	@Override
-	public void asignarRanking(int codigo, int posicion) {
-		Articulo a = buscarArticulo(codigo);
-		if(a!=null){
-			a.setPosicion(posicion);
+	public void asignarRanking(List<BestSellerDTO> list) throws Exception {
+		try {
+			em.getTransaction().begin();
+
+			for (BestSellerDTO bs : list) {
+				Articulo a = buscarArticulo(bs.getcodigoArticulo());
+				if (a != null) {
+					a.setPosicion(bs.getPosicion());
+				}
+				em.merge(a);
+			}
+			em.getTransaction().commit();
+		} catch (RollbackException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			throw e;
 		}
-		em.merge(a);
 	}
 
 	@Override
@@ -68,7 +96,15 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 
 	@Override
 	public List<Articulo> getArticulos() {
-		return buscarArticulos(null);
+		return buscarArticulos(null,null,true);
+	}
+
+	@Override
+	public List<Articulo> getBestSellers() {
+		return (List<Articulo>)em.createQuery("select p "
+				+ "from Articulo a "
+				+ "where a.posicion is not null "
+				+ "order by a.posicion asc").getResultList();
 	}
 
 }

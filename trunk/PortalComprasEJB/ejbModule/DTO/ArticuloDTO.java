@@ -7,13 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "articulo")
+@XmlRootElement (name="articulo")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ArticuloDTO implements Serializable {
-
+public class ArticuloDTO implements Serializable{
+	
 	/**
-		 * 
-		 */
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	@XmlElement
 	private int codigo;
@@ -45,14 +45,16 @@ public class ArticuloDTO implements Serializable {
 	private String origen;
 	@XmlElement
 	private String fecha;
-
+	
+	
 	public ArticuloDTO() {
-		super();
+		super();		
 	}
-
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 
 	public int getCodigo() {
 		return codigo;
@@ -73,35 +75,27 @@ public class ArticuloDTO implements Serializable {
 	public String getColor() {
 		return color;
 	}
-
 	public void setColor(String color) {
 		this.color = color;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 	public String getEdadRecomendada() {
 		return edadRecomendada;
 	}
-
 	public void setEdadRecomendada(String edadRecomendada) {
 		this.edadRecomendada = edadRecomendada;
 	}
-
 	public String getFichaTecnica() {
 		return fichaTecnica;
 	}
-
 	public void setFichaTecnica(String fichaTecnica) {
 		this.fichaTecnica = fichaTecnica;
 	}
-
 	public String getFotoURL() {
 		return fotoURL;
 	}
@@ -129,49 +123,40 @@ public class ArticuloDTO implements Serializable {
 	public String getMarca() {
 		return marca;
 	}
-
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-
 	public String getMaterial() {
 		return material;
 	}
-
 	public void setMaterial(String material) {
 		this.material = material;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public float getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-
 	public String getTalle() {
 		return talle;
 	}
-
 	public void setTalle(String talle) {
 		this.talle = talle;
 	}
-
 	public String getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	
 
 }

@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Transient;
+
+import tipoYEstados.ETipoArticulo;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -23,12 +26,12 @@ public abstract class Articulo implements Serializable {
 	private float precio;
 	private String foto;
 	private String origen;
-	private int posicion;
+	private Integer posicion;
 
 	public Articulo(int codigo) {
 		this.codigo = codigo;
 	}
-	
+
 	public Articulo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -89,12 +92,16 @@ public abstract class Articulo implements Serializable {
 		this.origen = origen;
 	}
 
-	public int getPosicion() {
+	public Integer getPosicion() {
 		return posicion;
 	}
-
-	public void setPosicion(int posicion) {
+	public void setPosicion(Integer posicion) {
 		this.posicion = posicion;
 	}
 
+	@Transient
+	public abstract String obtenerCaracteristicas();
+
+	@Transient
+	public abstract ETipoArticulo getTipo();
 }

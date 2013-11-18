@@ -1,6 +1,9 @@
 package entityBean;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
+
+import tipoYEstados.ETipoArticulo;
 
 @Entity
 public class Electrodomestico extends Articulo {
@@ -21,5 +24,16 @@ public class Electrodomestico extends Articulo {
 
 	public void setFichaTecnica(String fichaTecnica) {
 		this.fichaTecnica = fichaTecnica;
+	}
+	
+	@Override
+	@Transient
+	public String obtenerCaracteristicas() {
+		return "Ficha tecnica: " +fichaTecnica;
+	}
+	@Override
+	@Transient
+	public ETipoArticulo getTipo() {
+		return ETipoArticulo.Electrodomestico;
 	}
 }

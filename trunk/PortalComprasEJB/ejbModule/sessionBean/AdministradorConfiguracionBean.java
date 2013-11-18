@@ -37,16 +37,16 @@ public class AdministradorConfiguracionBean implements AdministradorConfiguracio
 	}
 
 	@Override
-	public Config activarConfig(Config c) {
-		Config cp = em.find(Config.class, c.getId());
+	public Config activarConfig(int c) {
+		Config cp = em.find(Config.class, c);
 		cp.setActivado(true);
 		//mergea solo por estar en sesion?
 		return em.merge(cp);
 	}
 
 	@Override
-	public Config desactivarConfig(Config c) {
-		Config cp = em.find(Config.class, c.getId());
+	public Config desactivarConfig(int c) {
+		Config cp = em.find(Config.class,c);
 		cp.setActivado(false);
 		//mergea solo por estar en sesion?
 		return em.merge(cp);

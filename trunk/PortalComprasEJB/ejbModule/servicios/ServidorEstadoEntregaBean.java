@@ -5,6 +5,10 @@ import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import util.TransformerUtil;
+
+import DTO.ResultadoDTO;
+
 import fachada.Fachada;
 
 /**
@@ -26,13 +30,15 @@ public class ServidorEstadoEntregaBean implements ServidorEstadoEntrega {
     }
     
     @WebMethod
-    public String notificarEntregaDespacho(int nro){
+    public String notificarEntregaDespacho(int nro) throws Exception{
     	try {
-			String resultado = fachada.cambioEstado(nro);
-			return this.getResultadoXML(resultado);
+			fachada.cambiarEstadoVenta(nro);
+			
+			return TransformerUtil.getXML(ResultadoDTO.getResultadoOK());
     	} catch (Exception e ) {
-    		logger.error("Error notificacion estado de entrega: " + e.getMessage() + "\n");
-    		return this.getResultadoXML(e.getMessage());
+    		e.printStackTrace();
+    		//logger.error("Error notificacion estado de entrega: " + e.getMessage() + "\n");
+    		return TransformerUtil.getXML(ResultadoDTO.getResultadoError(e.getMessage()));
     	}
     }
 

@@ -1,0 +1,18 @@
+ <script>
+ 	$.ajax({
+	    type: "GET",
+	    url: "ObtenerTodasCategorias",
+	    dataType: "jsonp",
+	    success: function (data) {
+	        var obj = data.query.results.entry, 
+	            ul = $("<ul>");           
+	        // iterate over the array and build the list
+	        for (var i = 0, l = obj.length; i < l; ++i) {
+	            ul.append("<li><a href='" + obj[i].link.href + "'>" + obj[i].title.content + "</a></li>");
+	        }
+	        ul += '</ul>';
+	        //$("#results").append(ul);    
+	        $(document.body).append(ul);
+	    }
+	});
+</script>

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Transient;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -16,7 +17,7 @@ public abstract class Config implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	private int id;
+	private Integer id;
 	private String nombre;
 	private String ip;
 	private String puerto;
@@ -28,12 +29,17 @@ public abstract class Config implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -65,7 +71,8 @@ public abstract class Config implements Serializable{
 		this.activado = activado;
 	}
 	
-	
+	@Transient
+	public abstract boolean isSincronico();	
 	
 	
 }

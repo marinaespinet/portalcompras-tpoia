@@ -1,6 +1,7 @@
 package entityBean;
 
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 public class ConfigSincronica extends Config{
@@ -14,6 +15,10 @@ public class ConfigSincronica extends Config{
 		this.url = url;
 	}
 	
-	
+	@Override
+	@Transient
+	public boolean isSincronico() {
+		return true;
+	}
 	
 }
