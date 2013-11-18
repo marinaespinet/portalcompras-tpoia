@@ -8,33 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/tablesorter.css" type="text/css" id="" media="print, projection, screen" />
-<link rel="stylesheet" href="css/navbar.css" type="text/css" />
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#main-nav li a.main-link").hover(function(){
-		$("#main-nav li a.close").fadeIn();
-		$("#main-nav li a.main-link").removeClass("active");												 
-		$(this).addClass("active");										 
-		$("#sub-link-bar").animate({
-			height: "40px"					   
-		});
-		$(".sub-links").hide();
-		$(this).siblings(".sub-links").fadeIn();
-	});
-	$("#main-nav li a.close").click(function(){
-		$("#main-nav li a.main-link").removeClass("active");												 									 
-		$(".sub-links").fadeOut();
-		$("#sub-link-bar").animate({
-			height: "10px"					   
-		});		
-		$("#main-nav li a.close").fadeOut();
-	});
-	
-	
-});
 
-</script>
+<jsp:include page="head.jsp" flush="true" />
 <script type="text/javascript" src="js/jquery-latest.js"></script> 
 <script type="text/javascript" src="js/jquery.tablesorter.js"></script> 
 <script type="text/javascript" id="js">$(document).ready(function() {
@@ -45,7 +20,6 @@ $(document).ready(function(){
 	});
 });
 </script>
-<title>Portal Compras</title>
 </head>
 <body>
 <div id="sub-link-bar"> </div>
@@ -59,7 +33,7 @@ $(document).ready(function(){
             	<li><a href="index.jsp">Inicio</a></li>
             </ul>
         </li>
-        <li><a class="main-link" href="ObtenerTodosProductos?action=listar">Articulos</a>
+        <li><a class="main-link" href="ObtenerTodosArticulos?action=listar">Articulos</a>
           <ul class="sub-links">
             <li><a href="ObtenerTodosProductos?cat=moda&action=listar" title="Ver todos los articulos de Moda">Moda</a> </li>
             <li><a href="ObtenerTodosProductos?cat=electro&action=listar" title="Ver todos los articulos de Electro">Electro</a> </li>
@@ -97,7 +71,7 @@ $(document).ready(function(){
   <!-- End main-handle-->
   <br><br><br>
     <h1>Articulos</h1>
-	<form action="BusquedaProducto" method="post">
+	<form action="BusquedaArticulo" method="post">
 	<fieldset style="float: left; padding: 2em">
 	<legend style="color:#FFFFFF;font-family: sans-serif">Ingrese datos del articulo</legend>
 	<table border="0" cellpadding="0" width="50" bgcolor="#2d2620">
@@ -125,7 +99,7 @@ $(document).ready(function(){
 				clase = "\"\"";//System.out.println("<tr>");
 	%>
             <tr class=<%=clase %>>
-            <td><a href="ObtenerProducto?id=<%=articulo.getCodigo()%>"><%=articulo.getNombre()%></a></td>
+            <td><a href="ObtenerArticulo?id=<%=articulo.getCodigo()%>"><%=articulo.getNombre()%></a></td>
             <td><%=articulo.getMarca()%></td>
             <td><%=articulo.getPrecio()%></td>
             <td><%=articulo.getPosicion()%></td>

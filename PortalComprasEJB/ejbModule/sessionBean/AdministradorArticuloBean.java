@@ -56,7 +56,7 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 		}
 		Query q = em
 				.createQuery(jpql);
-		if (criterio != null) {
+		if (criterio != null && !criterio.isEmpty()) {
 			q.setParameter("criterio", "%" + criterio + "%");
 		}
 		return q.getResultList();
@@ -103,7 +103,7 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 
 	@Override
 	public List<Articulo> getBestSellers() {
-		return (List<Articulo>)em.createQuery("select p "
+		return (List<Articulo>)em.createQuery("select a "
 				+ "from Articulo a "
 				+ "where a.posicion is not null "
 				+ "order by a.posicion asc").getResultList();
@@ -111,15 +111,15 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 	
 	@Override
 	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo) {
-		return (List<Articulo>)em.createQuery("select p "
+		return (List<Articulo>)em.createQuery("select a "
 				+ "from Articulo a "
 				+ "where a.tipo =:tipo").setParameter("tipo", tipo).getResultList();
 	}
 	
 	@Override
 	public List<ETipoArticulo> getTipoArticulos() {
-		return (List<ETipoArticulo>)em.createQuery("select distinct p.tipo  "
-				+ "from Articulo a group by p.tipo ").getResultList();
+		return (List<ETipoArticulo>)em.createQuery("select distinct a.tipo  "
+				+ "from Articulo a group by a.tipo ").getResultList();
 	}
 
 }

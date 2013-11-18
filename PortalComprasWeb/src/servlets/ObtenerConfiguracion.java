@@ -43,6 +43,10 @@ public class ObtenerConfiguracion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String resultPage;
+        
+        if(request.getSession().getAttribute("usuario") ==null){
+        	resultPage = "/login.jsp";
+		}else{
 
         try {
         	List<Config> configs = facade.getConfigs();
@@ -54,7 +58,8 @@ public class ObtenerConfiguracion extends HttpServlet {
         	resultPage = "/error.jsp";
         }
         RequestDispatcher rd = request.getRequestDispatcher(resultPage);
-        rd.forward(request, response);   
+        rd.forward(request, response);  
+		}
 	}
 
 }

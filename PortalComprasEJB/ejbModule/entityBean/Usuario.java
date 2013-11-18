@@ -21,6 +21,7 @@ public class Usuario implements Serializable{
 	@Embedded
 	private Direccion direccion;
 	private String password;
+	private boolean administrador;
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
@@ -75,6 +76,17 @@ public class Usuario implements Serializable{
 	public void setCoordenadaY(double coordenadaY) {
 		this.coordenadaY = coordenadaY;
 	}
+
+
+	public boolean isAdministrador() {
+		return administrador;
+	}
+
+
+	public void setAdministrador(boolean administrador) {
+		this.administrador = administrador;
+	}
+	
 	
 	
 	

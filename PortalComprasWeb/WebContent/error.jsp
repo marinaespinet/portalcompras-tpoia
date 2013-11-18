@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 </head>
 <body>
-<jsp:include page="cab.jsp" flush="true" />
+<jsp:include page="menu.jsp" flush="true" />
 <br><br><br>
 <h1>Página de Error</h1>
 <% String error = (String)request.getAttribute("error"); %>
-Se han producido un error: <%=error %>
+Se ha producido un error: <%=error %>
 </body>
 </html>
