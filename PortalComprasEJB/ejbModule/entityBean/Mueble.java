@@ -14,7 +14,7 @@ public class Mueble extends Articulo {
 	private String material;
 	
 	public Mueble() {
-		// TODO Auto-generated constructor stub
+		setTipo(ETipoArticulo.Mueble);
 	}
 
 	public String getMaterial() {
@@ -31,9 +31,5 @@ public class Mueble extends Articulo {
 		return "Material : "+material;
 	}
 	
-	@Override
-	@Transient
-	public ETipoArticulo getTipo() {
-		return ETipoArticulo.Mueble;
-	}
+
 }

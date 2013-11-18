@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/tabla1.css">
-<title>Portal Compras - Grupo 2</title>
+<title>Portal de Compras</title>
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 <link rel="stylesheet" href="css/tabla1.css">
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
@@ -45,26 +45,26 @@ $(document).ready(function(){
 <thead><tr><th>Id Venta</th><th>Estado</th><th>Fecha</th><th>Contenido</th></tr></thead>
 <tbody>
     <%  
-    	List<Venta> Ventas= (List<Venta>)request.getAttribute("Ventas"); 
-		Iterator<Venta> itPed = Ventas.iterator();
+    	List<Venta> ventas= (List<Venta>)request.getAttribute("Ventas"); 
+		Iterator<Venta> itPed = ventas.iterator();
     	int rotar = 0;
     	String clase = "";
 		while (itPed.hasNext()){
-			Venta Venta = itPed.next();
+			Venta venta = itPed.next();
 			if (rotar % 2 != 0)
 				clase = "\"alt\"";
 			else
 				clase = "\"\"";
 	%>
             <tr class=<%=clase %>>
-            <td><%=Venta.getNroVenta()%></td>
-            <td><%=Venta.getEstado()%></td>
-            <td><%=Venta.getFecha()%></td>
+            <td><%=venta.getNroVenta()%></td>
+            <td><%=venta.getEstado()%></td>
+            <td><%=venta.getFecha()%></td>
             <td>
             	<%
-            		Iterator<ItemCantidadDTO> itemsPed = Venta.getItems().iterator();
+            		Iterator<ItemVenta> itemsPed = venta.getItemsVenta().iterator();
             		while (itemsPed.hasNext()) {
-            			ItemCantidadDTO ped = itemsPed.next();
+            			ItemVenta ped = itemsPed.next();
             	%>	
             		<%=ped.toString() %><br>	
             	<%		

@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.RollbackException;
 
+import tipoYEstados.ETipoArticulo;
+
 import DTO.BestSellerDTO;
 import entityBean.Articulo;
 
@@ -105,6 +107,19 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 				+ "from Articulo a "
 				+ "where a.posicion is not null "
 				+ "order by a.posicion asc").getResultList();
+	}
+	
+	@Override
+	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo) {
+		return (List<Articulo>)em.createQuery("select p "
+				+ "from Articulo a "
+				+ "where a.tipo =:tipo").setParameter("tipo", tipo).getResultList();
+	}
+	
+	@Override
+	public List<ETipoArticulo> getTipoArticulos() {
+		return (List<ETipoArticulo>)em.createQuery("select distinct p.tipo  "
+				+ "from Articulo a group by p.tipo ").getResultList();
 	}
 
 }

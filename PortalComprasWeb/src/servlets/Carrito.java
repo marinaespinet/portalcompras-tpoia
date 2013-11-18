@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +26,8 @@ public class Carrito extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private HttpSession session;
-	private BusinessDelegate facade = BusinessDelegate.getInstance();
+	@EJB
+	private BusinessDelegate facade;
     /**
      * @see HttpServlet#HttpServlet()
      */

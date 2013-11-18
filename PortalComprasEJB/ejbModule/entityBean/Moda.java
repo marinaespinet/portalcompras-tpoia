@@ -16,6 +16,7 @@ public class Moda extends Articulo {
 	
 	public Moda() {
 		super();
+		setTipo(ETipoArticulo.Moda);
 	}
 
 	public String getColor() {
@@ -39,10 +40,5 @@ public class Moda extends Articulo {
 	public String obtenerCaracteristicas() {
 		return "Color: " + color +", \n Talle: "+talle;
 	}
-	@Override
-	@Transient
-	public ETipoArticulo getTipo() {
-		return ETipoArticulo.Moda;
-	}
-	
+
 }

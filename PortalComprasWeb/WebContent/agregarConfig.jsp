@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Portal Compras - Grupo 2</title>
+<title>Portal de Compras</title>
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
 <script type="text/javascript">

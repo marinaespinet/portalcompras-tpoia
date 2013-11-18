@@ -1,7 +1,7 @@
+<%@page import="util.FechaUtil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="entities.Producto"%>
-<%@page import="entities.Categoria"%>
+<%@page import="entityBean.*"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,7 +45,7 @@ $(document).ready(function(){
 	});
 });
 </script>
-<title>Portal Compras - Grupo 2</title>
+<title>Portal Compras</title>
 </head>
 <body>
 <div id="sub-link-bar"> </div>
@@ -59,7 +59,7 @@ $(document).ready(function(){
             	<li><a href="index.jsp">Inicio</a></li>
             </ul>
         </li>
-        <li><a class="main-link" href="ObtenerTodosProductos?action=listar">Productos</a>
+        <li><a class="main-link" href="ObtenerTodosProductos?action=listar">Articulos</a>
           <ul class="sub-links">
             <li><a href="ObtenerTodosProductos?cat=moda&action=listar" title="Ver todos los articulos de Moda">Moda</a> </li>
             <li><a href="ObtenerTodosProductos?cat=electro&action=listar" title="Ver todos los articulos de Electro">Electro</a> </li>
@@ -96,10 +96,10 @@ $(document).ready(function(){
     <b class="round"> <b class="round5"></b> <b class="round4"></b> <b class="round3"></b> <b class="round2"><b></b></b> <b class="round1"><b></b></b></b> </div>
   <!-- End main-handle-->
   <br><br><br>
-    <h1>Productos</h1>
+    <h1>Articulos</h1>
 	<form action="BusquedaProducto" method="post">
 	<fieldset style="float: left; padding: 2em">
-	<legend style="color:#FFFFFF;font-family: sans-serif">Ingrese datos del producto</legend>
+	<legend style="color:#FFFFFF;font-family: sans-serif">Ingrese datos del articulo</legend>
 	<table border="0" cellpadding="0" width="50" bgcolor="#2d2620">
 	<tr>
 	<td><label for="Buscar" style="color:#FFFFFF;font-family: sans-serif">Buscar :</label></td>
@@ -113,24 +113,24 @@ $(document).ready(function(){
 <thead><tr><th>Nombre</th><th>Marca</th><th>Precio</th><th>Ranking</th><th>Categoria</th><th>Fecha</th></tr></thead>
 <tbody>
     <%  
-        List<Producto> productos= (List<Producto>)request.getAttribute("listado"); 
-    	Iterator<Producto> itProd = productos.iterator();
+        List<Articulo> productos= (List<Articulo>)request.getAttribute("listado"); 
+    	Iterator<Articulo> itProd = productos.iterator();
     	int rotar = 0;
     	String clase = "";
 		while (itProd.hasNext()){
-			Producto producto = itProd.next();
+			Articulo articulo = itProd.next();
 			if (rotar % 2 != 0)
 				clase = "\"alt\"";//System.out.println("<tr class=\"alt\">");
 			else
 				clase = "\"\"";//System.out.println("<tr>");
 	%>
             <tr class=<%=clase %>>
-            <td><a href="ObtenerProducto?id=<%=producto.getId()%>"><%=producto.getNombre()%></a></td>
-            <td><%=producto.getMarca()%></td>
-            <td><%=producto.getPrecio()%></td>
-            <td><%=producto.getBestSellerRanking()%></td>
-            <td><%=producto.getCategoria().getNombre()%></td>
-            <td><%=producto.getFecha()%></td>
+            <td><a href="ObtenerProducto?id=<%=articulo.getCodigo()%>"><%=articulo.getNombre()%></a></td>
+            <td><%=articulo.getMarca()%></td>
+            <td><%=articulo.getPrecio()%></td>
+            <td><%=articulo.getPosicion()%></td>
+            <td><%=articulo.getTipo().toString()%></td>
+            <td><%=FechaUtil.toStringXml(articulo.getFecha()) %></td>
             </tr>
     <%  
     		rotar++;

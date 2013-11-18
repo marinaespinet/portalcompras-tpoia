@@ -1,6 +1,7 @@
 package fachada;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -13,6 +14,7 @@ import sessionBean.AdministradorConfiguracion;
 import sessionBean.AdministradorNotificaciones;
 import sessionBean.AdministradorUsuario;
 import sessionBean.AdministradorVenta;
+import tipoYEstados.ETipoArticulo;
 import util.TransformerUtil;
 import DTO.ArticuloDTO;
 import entityBean.Articulo;
@@ -60,7 +62,7 @@ public class FachadaBean implements Fachada, Serializable {
 	}
 
 	@Override
-	public Articulo registrarArticulo(ArticuloDTO art) {
+	public Articulo registrarArticulo(ArticuloDTO art) throws ParseException {
 		Articulo a = TransformerUtil.toArticulo(art);
 		a = adminArticulo.registrarArticulo(a);
 		return a;
@@ -137,6 +139,16 @@ public class FachadaBean implements Fachada, Serializable {
 	@Override
 	public List<Config> getConfigsByFuncionalidad(String funcion) {
 		return adminConfiguracion.getConfigsByFuncionalidad(funcion);
+	}
+	
+	@Override
+	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo) {
+		return adminArticulo.getArticulosPorTipo(tipo);
+	}
+	
+	@Override
+	public List<ETipoArticulo> getTipoArticulos() {
+		return adminArticulo.getTipoArticulos();
 	}
 
 }

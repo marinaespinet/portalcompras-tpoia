@@ -2,6 +2,7 @@ package util;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +33,7 @@ import entityBean.Nino;
 public class TransformerUtil {
 
 	
-	public static Articulo toArticulo(ArticuloDTO aDTO) {
+	public static Articulo toArticulo(ArticuloDTO aDTO) throws ParseException {
 		Articulo a = null;
 		if (aDTO.getTipo().equalsIgnoreCase("Electrodomesticos")) {
 			Electrodomestico e = new Electrodomestico();
@@ -59,6 +60,7 @@ public class TransformerUtil {
 		a.setNombre(aDTO.getNombre());
 		a.setOrigen(aDTO.getOrigen());
 		a.setPrecio(aDTO.getPrecio());
+		a.setFecha(FechaUtil.toTimeStamp(aDTO.getFecha()));
 
 		return a;
 	}

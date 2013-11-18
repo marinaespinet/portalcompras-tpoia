@@ -1,15 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="simples.ItemCarrito"%>
+<%@page import="DTO.ItemCantidadDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="entities.Producto"%>
+<%@page import="entityBean.Articulo"%>
 <%@page import="java.util.*"%>
 <%@ page session="true" %>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Portal Compras - Grupo 2</title>
+<title>Portal de Compras</title>
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
 <script type="text/javascript">
@@ -43,7 +43,7 @@ $(document).ready(function(){
 <jsp:include page="cab.jsp" flush="true" />
 <br><br><br>
 <%
- List<ItemCarrito> items = (List<ItemCarrito>) request.getAttribute("items");
+ List<ItemCantidadDTO> items = (List<ItemCantidadDTO>) request.getAttribute("items");
  if (items!= null && items.size() > 0) {
 %> 
 <br><br>
@@ -62,7 +62,7 @@ $(document).ready(function(){
  
  <%
   for (int i=0; i < items.size();i++) {
-   ItemCarrito it = items.get(i);
+   ItemCantidadDTO it = items.get(i);
  %>
  <tr>
   <td><%=it.getProducto().getId()%></td>

@@ -76,7 +76,7 @@ public class AdministradorCarritoBean implements AdministradorCarrito {
 		if (articulosCantidad.containsKey(codigo)) {
 			modificarCantidad(codigo, articulosCantidad.get(codigo).getCantidad() + cant);
 		} else {
-			articulosCantidad.put(codigo, new ItemCantidadDTO(codigo, cant));
+			articulosCantidad.put(codigo, new ItemCantidadDTO(a, cant));
 			adminNotificaciones.notificarAgregadoArticuloCarrito(usuario, codigo, cant);
 		}
 		

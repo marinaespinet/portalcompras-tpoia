@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="entities.*"%>
+<%@page import="entityBean.*"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/tabla1.css">
-<title>Portal Compras - Grupo 2</title>
+<title>Portal de Compras</title>
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
 <script type="text/javascript">
@@ -56,19 +56,19 @@ $(document).ready(function(){
 </tr></thead>
 <tbody>
     <%  
-        List<Configuracion> configs = (List<Configuracion>)request.getAttribute("listado"); 
-    	Iterator<Configuracion> itConf = configs.iterator();
+        List<Config> configs = (List<Config>)request.getAttribute("listado"); 
+    	Iterator<Config> itConf = configs.iterator();
     	int rotar = 0;
     	String clase = "";
     	String accionEstado = "";
     	String estado = "";
 		while (itConf.hasNext()){
-			Configuracion conf = itConf.next();
+			Config conf = itConf.next();
 			if (rotar % 2 != 0)
 				clase = "\"alt\"";
 			else
 				clase = "\"\"";
-			if (conf.isActivo()) {
+			if (conf.isActivado()) {
 				accionEstado = "Desactivar";
 				estado = "Activo";
 			}
@@ -86,8 +86,8 @@ $(document).ready(function(){
             <td><%=conf.getIp()%></td>
             <td><%=conf.getPuerto()%></td>
             <% 
-            	if (conf.getClass().getSimpleName().equals("ConfiguracionAsincronica")) {
-            		ConfiguracionAsincronica asinc = (ConfiguracionAsincronica) conf;
+            	if (conf.getClass().getSimpleName().equals("ConfigAsincronica")) {
+            		ConfigAsincronica asinc = (ConfigAsincronica) conf;
             %>
             		<td>N/A</td>
             		<td><%=asinc.getUser() %></td>
@@ -95,7 +95,7 @@ $(document).ready(function(){
             <%
             	}
             	else {
-            		ConfiguracionSincronica sinc = (ConfiguracionSincronica) conf;
+            		ConfigSincronica sinc = (ConfigSincronica) conf;
             %>
             		<td><%=sinc.getUrl()%></td>
             		<td>N/A</td>

@@ -3,12 +3,15 @@ package servlets;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import tipoYEstados.ETipoArticulo;
 
 import bd.BusinessDelegate;
 import entityBean.Articulo;
@@ -19,7 +22,8 @@ import entityBean.Articulo;
 @WebServlet("/ObtenerTodosArticulos")
 public class ObtenerTodosArticulos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BusinessDelegate facade = BusinessDelegate.getInstance();
+	@EJB
+	private BusinessDelegate facade;
 	/**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,14 +53,14 @@ public class ObtenerTodosArticulos extends HttpServlet {
         }
         if (action.equals("listar")){
         	try {
-        		String catBuscada = request.getParameter("cat");
-        		if (catBuscada == null || catBuscada.length() < 1) {
+        		String tipoBuscado = request.getParameter("cat");
+        		if (tipoBuscado == null || tipoBuscado.length() < 1) {
         			listado = facade.todosArticulos();  
         			request.setAttribute("listado", listado);
         		}
         		else {
-        			Categoria categoria = facade.getCategoria(catBuscada);
-        			listado = facade.getArticulosPorCategoria(categoria);
+        			ETipoArticulo categoria = ETipoArticulo.valueOf(tipoBuscado);
+        			listado = facade.getArticulosPorTipo(categoria);
         			request.setAttribute("listado", listado);
         		}				
         	} catch (Exception e){

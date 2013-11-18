@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import tipoYEstados.ETipoArticulo;
+
 import DTO.BestSellerDTO;
 import entityBean.Articulo;
 
@@ -24,5 +26,9 @@ public interface AdministradorArticulo {
 	public List<Articulo> getBestSellers();
 
 	List<Articulo> buscarArticulos(String criterio);
+
+	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo);
+
+	public List<ETipoArticulo> getTipoArticulos();
 
 }
