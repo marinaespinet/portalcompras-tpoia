@@ -5,7 +5,8 @@
 <html>
 <jsp:include page="head.jsp" flush="true" />
 <body>
-<jsp:include page="menu.jsp" flush="true" />
-<br><br><br>
+<jsp:include page="menu.jsp"/>
+<br><br>
+<p style="font-size: 35; ">PORTAL DE COMPRAS</p><br>
 </body>
 </html>

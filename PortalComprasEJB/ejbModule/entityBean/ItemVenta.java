@@ -3,6 +3,8 @@ package entityBean;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
@@ -16,6 +18,7 @@ public class ItemVenta implements Serializable {
 	 */
 	private static final long serialVersionUID = -3380258419215168155L;
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@ManyToOne
 	private Articulo articulo;

@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<jsp:include page="head.jsp" flush="true" />
+<jsp:include page="head.jsp" />
 </head>
 <body>
-<jsp:include page="menu.jsp" flush="true" />
+<jsp:include page="menu.jsp"/>
     <h1>Nueva Configuración</h1>
     <form action="AgregarConfiguracion" method="post">
 	<fieldset style="float: left; padding: 2em">

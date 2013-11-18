@@ -12,8 +12,8 @@
 
 </head>
 <body>
-<jsp:include page="menu.jsp" flush="true" />
-<h1>Tabla de Configuración</h1>
+<jsp:include page="menu.jsp"/>
+<h1>Configuracion</h1>
 <div class="datagrid"><table>
 <thead><tr>
 <th>Id</th>

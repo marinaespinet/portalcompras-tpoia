@@ -9,4 +9,5 @@ public interface AdministradorUsuario {
 
 	public boolean loguearUser(String dni, String pass);
 	public Usuario obtenerUsuario(String dni);
+	public void registrar(Object o);
 }

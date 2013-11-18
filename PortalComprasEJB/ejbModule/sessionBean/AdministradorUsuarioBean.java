@@ -40,5 +40,10 @@ public class AdministradorUsuarioBean implements AdministradorUsuario {
 	public Usuario obtenerUsuario(String dni) {
 		return em.find(Usuario.class, dni);
 	}
+		
+	 	@Override
+	 	public void registrar(Object o) {
+	 		em.persist(o);
+	 	}
 
 }

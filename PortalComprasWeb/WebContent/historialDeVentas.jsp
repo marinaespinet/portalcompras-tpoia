@@ -11,7 +11,7 @@
 <jsp:include page="head.jsp" flush="true" />
 </head>
 <body>
-<jsp:include page="menu.jsp" flush="true" />
+<jsp:include page="menu.jsp"/>
 <br><br><br>
 <h1>Historial de Ventas</h1>
 <div class="datagrid"><table>

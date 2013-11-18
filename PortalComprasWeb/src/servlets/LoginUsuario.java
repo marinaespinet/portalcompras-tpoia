@@ -54,11 +54,11 @@ public class LoginUsuario extends HttpServlet {
 			}
 			if (action.equals("login")) {
 				try {
-					String userMail = request.getParameter("usuario");
+					String userDni = request.getParameter("usuario");
 					String password = request.getParameter("password");
 
-					if (facade.loginValido(userMail, password)) {
-						Usuario u = facade.obtenerUsuario(userMail);
+					if (facade.loginValido(userDni, password)) {
+						Usuario u = facade.obtenerUsuario(userDni);
 						session.setAttribute("usuario", u);
 						session.setAttribute("carrito", carrito);
 						resultPage = "/index.jsp";

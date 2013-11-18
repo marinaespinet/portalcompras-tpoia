@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/tabla1.css">
 <<jsp:include page="head.jsp" flush="true" />
 <body>
-<jsp:include page="menu.jsp" flush="true" />
+<jsp:include page="menu.jsp"/>
 <br><br><br>
 <h1>Articulos Mas Vendidos</h1>
 <div class="datagrid"><table>
