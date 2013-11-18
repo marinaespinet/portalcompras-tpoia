@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="entities.Producto"%>
+<%@page import="entityBean.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Portal Compras - Grupo 2</title>
+<title>Portal de Compras</title>
 <link rel="stylesheet" href="css/navbar.css" type="text/css" />
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
 <script type="text/javascript">
@@ -59,7 +59,7 @@ function soloNumeros(evt){
 <body>
 <jsp:include page="cab.jsp" flush="true" />
 <br><br><br>
-<h1>Detalle del Producto</h1>
+<h1>Detalle del Articulo</h1>
 <form name="form1" action="Carrito" method="POST" onsubmit="return validar();">
 <fieldset style="float: left; padding: 2em">
 <table>
@@ -75,15 +75,15 @@ function soloNumeros(evt){
 	</tr>
 
     <%  
-        Producto producto= (Producto)request.getAttribute("producto"); 
+        Articulo articulo= (Articulo)request.getAttribute("Articulo"); 
 	%>
 		<tr style="color:#FFFFFF;font-family: sans-serif">
-			<td><input type="text" size="8" style="color:#FFFFFF;font-family: sans-serif;background-color:transparent;border:0px solid white;" name="id" readonly="readonly" value=<%=producto.getId()%>></td>
-            <td><%=producto.getNombre()%></td>
-            <td><%=producto.getMarca()%></td>
-            <td><%=producto.getPrecio()%></td>
- 			<td><%=producto.getCategoria().getNombre()%></td>
-            <td><%=producto.getDescripcion()%></td>
+			<td><input type="text" size="8" style="color:#FFFFFF;font-family: sans-serif;background-color:transparent;border:0px solid white;" name="id" readonly="readonly" value=<%=articulo.getCodigo()%>></td>
+            <td><%=articulo.getNombre()%></td>
+            <td><%=articulo.getMarca()%></td>
+            <td><%=articulo.getPrecio()%></td>
+ 			<td><%=articulo.getTipo().toString()%></td>
+            <td><%=articulo.getDescripcion()%></td>
             <td><input type="text" onkeypress="return soloNumeros(event)" name="cantidad" value=0></td>
             <td><input type="submit" value="Agregar" name="add"><input type="hidden" name="action" value="add"></td>
         </tr>
@@ -100,11 +100,11 @@ function soloNumeros(evt){
     </tr>
     <tr>
         <td>Caracteristicas</td>
-        <td><%=producto.getCaracteristicas()%></td>
+        <td><%=articulo.obtenerCaracteristicas()%></td>
     </tr>
     <tr>
         <td>Imagen</td>
-        <td><a href="<%=producto.getImagen()%>" target = "_blank"><%=producto.getImagen()%></a></td>
+        <td><a href="<%= articulo.getFoto() %>" target = "_blank"><%=articulo.getFoto()%></a></td>
     </tr>
     </tbody>
 </table>

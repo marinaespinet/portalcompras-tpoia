@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +23,8 @@ import entityBean.Venta;
 public class TodasLasVentas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        	
-	private BusinessDelegate facade = BusinessDelegate.getInstance();
+	@EJB
+	private BusinessDelegate facade;
 	private HttpSession session;
     /**
      * @see HttpServlet#HttpServlet()

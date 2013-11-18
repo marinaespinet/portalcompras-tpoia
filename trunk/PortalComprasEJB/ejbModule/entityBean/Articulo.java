@@ -1,6 +1,7 @@
 package entityBean;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,6 +28,8 @@ public abstract class Articulo implements Serializable {
 	private String foto;
 	private String origen;
 	private Integer posicion;
+	private ETipoArticulo tipo;
+	private Timestamp fecha;
 
 	public Articulo(int codigo) {
 		this.codigo = codigo;
@@ -102,6 +105,23 @@ public abstract class Articulo implements Serializable {
 	@Transient
 	public abstract String obtenerCaracteristicas();
 
-	@Transient
-	public abstract ETipoArticulo getTipo();
+	public ETipoArticulo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(ETipoArticulo tipo) {
+		this.tipo = tipo;
+	}
+
+	public Timestamp getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Timestamp fecha) {
+		this.fecha = fecha;
+	}
+	
+	
+
+	
 }

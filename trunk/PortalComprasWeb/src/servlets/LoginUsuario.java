@@ -23,7 +23,8 @@ public class LoginUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 
-	private BusinessDelegate facade = BusinessDelegate.getInstance();
+	@EJB
+	private BusinessDelegate facade;
 	
 	@EJB
 	private AdministradorCarrito carrito;

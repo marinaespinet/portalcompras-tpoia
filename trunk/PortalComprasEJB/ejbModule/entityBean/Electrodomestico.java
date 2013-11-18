@@ -16,6 +16,7 @@ public class Electrodomestico extends Articulo {
 	
 	public Electrodomestico() {
 		super();
+		setTipo(ETipoArticulo.Electrodomestico);
 	}
 
 	public String getFichaTecnica() {
@@ -30,10 +31,5 @@ public class Electrodomestico extends Articulo {
 	@Transient
 	public String obtenerCaracteristicas() {
 		return "Ficha tecnica: " +fichaTecnica;
-	}
-	@Override
-	@Transient
-	public ETipoArticulo getTipo() {
-		return ETipoArticulo.Electrodomestico;
 	}
 }

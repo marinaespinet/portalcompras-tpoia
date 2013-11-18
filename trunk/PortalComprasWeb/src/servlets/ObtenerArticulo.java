@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,10 +19,10 @@ import entityBean.Articulo;
 @WebServlet("/ObtenerArticulo")
 public class ObtenerArticulo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BusinessDelegate facade = BusinessDelegate.getInstance();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	@EJB
+	private BusinessDelegate facade;
+	
+
     public ObtenerArticulo() {
         super();
         // TODO Auto-generated constructor stub

@@ -14,7 +14,7 @@ public class Nino extends Articulo {
 	private String edadRecomendada;
 	
 	public Nino() {
-		// TODO Auto-generated constructor stub
+		setTipo(ETipoArticulo.Nino);
 	}
 
 	public String getEdadRecomendada() {
@@ -31,10 +31,5 @@ public class Nino extends Articulo {
 		return "Edad recomendada: " + edadRecomendada;
 	}
 	
-	@Override
-	@Transient
-	public ETipoArticulo getTipo() {
-		return ETipoArticulo.Nino;
-	}
 	
 }

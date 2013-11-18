@@ -1,7 +1,10 @@
 package fachada;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.ejb.Local;
+
+import tipoYEstados.ETipoArticulo;
 
 import DTO.ArticuloDTO;
 import DTO.VentaDTO;
@@ -23,7 +26,7 @@ public interface Fachada {
 	public Articulo buscarArticulo(int codigo);
 	public List<Articulo> getArticulos();
 	void asignarRanking(String json) throws Exception;
-	public Articulo registrarArticulo(ArticuloDTO a);
+	public Articulo registrarArticulo(ArticuloDTO a) throws ParseException;
 	
 	//venta
 	public Venta getVentaByNro(int nro) throws Exception;
@@ -41,6 +44,8 @@ public interface Fachada {
 	public List<Config> getConfigsByFuncionalidad(String funcion);
 	
 	public String test();
+	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo);
+	public List<ETipoArticulo> getTipoArticulos();
 	
 	
 }

@@ -6,6 +6,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
+import entityBean.Articulo;
+
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ItemCantidadDTO implements Serializable {
@@ -19,6 +21,8 @@ public class ItemCantidadDTO implements Serializable {
 	private int codigoArticulo;
 	@XmlElement
 	private int cantidad;
+	
+	private Articulo articulo;
 	
 	public int getCodigoArticulo() {
 		return codigoArticulo;
@@ -43,6 +47,21 @@ public class ItemCantidadDTO implements Serializable {
 		this.codigoArticulo = cod;
 		this.cantidad = cant;
 	}
+	
+	public ItemCantidadDTO(Articulo articulo, Integer cant) {
+		this.codigoArticulo = articulo.getCodigo();
+		this.articulo = articulo;
+		this.cantidad = cant;
+	}
+	
+	public Articulo getArticulo() {
+		return articulo;
+	}
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+	
+	
 	
 	
 
