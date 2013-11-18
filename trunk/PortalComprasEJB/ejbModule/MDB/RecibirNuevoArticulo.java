@@ -13,13 +13,20 @@ import javax.xml.bind.JAXBContext;
 import DTO.ArticuloDTO;
 import fachada.Fachada;
 
-@MessageDriven(mappedName = "jms/queue/deposito", activationConfig = {
+@MessageDriven(mappedName = "queue/deposito", activationConfig = {
+		@ActivationConfigProperty(propertyName = "clientId", propertyValue = "depositoClientID"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/deposito"),
+		@ActivationConfigProperty(propertyName = "user", propertyValue = "deposito"),
+		@ActivationConfigProperty(propertyName = "password", propertyValue = "deposito123"),
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+/*@MessageDriven(mappedName = "jms/queue/deposito", activationConfig = {
 		@ActivationConfigProperty(propertyName = "clientId", propertyValue = "depositoClientID"),
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "jms/queue/deposito"),
 		@ActivationConfigProperty(propertyName = "user", propertyValue = "deposito"),
 		@ActivationConfigProperty(propertyName = "password", propertyValue = "deposito123"),
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })
+		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge") })*/
 public class RecibirNuevoArticulo implements MessageListener {
 
 	@EJB

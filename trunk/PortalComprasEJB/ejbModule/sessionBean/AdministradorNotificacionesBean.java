@@ -4,7 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import servicios.InformarLyMSincronico;
+import servicios.InformarSincronicoLyM;
 import types.EFuncionalidad;
 import DTO.LogDTO;
 import DTO.VentaDTO;
@@ -53,14 +53,15 @@ public class AdministradorNotificacionesBean implements AdministradorNotificacio
 	private String informarLog(String mensajeLog) {
 		//agarro el primero (solo deberia haber 1 a la vez activo, si hay 2 agarro cualquiera
 		Config c = adminConfig.getConfigsByFuncionalidad(EFuncionalidad.venta.toString()).get(0);
-		return InformarLyMSincronico.informarLog(new LogDTO(), c);
+		if()
+		return InformarSincronicoLyM.informarLog(new LogDTO(), c);
 	}
 
 	@Override
 	public String informarVenta(Usuario u, Venta v) {
 		//agarro el primero (solo deberia haber 1 a la vez activo, si hay 2 agarro cualquiera
 		Config c = adminConfig.getConfigsByFuncionalidad(EFuncionalidad.venta.toString()).get(0);
-		return InformarLyMSincronico.informarVenta(new VentaDTO(), c);
+		return InformarSincronicoLyM.informarVenta(new VentaDTO(), c);
 	}
 	
 

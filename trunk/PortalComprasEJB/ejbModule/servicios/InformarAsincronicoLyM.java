@@ -13,7 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-public class EnviarLogLyMAsincronico {
+public class InformarAsincronicoLyM {
 	private static final String DEFAULT_CONNECTION_FACTORY = "jms/RemoteConnectionFactory";
 
 	private static final String DEFAULT_DESTINATION = "jms/queue/log";

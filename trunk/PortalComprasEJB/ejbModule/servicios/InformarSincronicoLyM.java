@@ -6,7 +6,7 @@ import DTO.LogDTO;
 import DTO.VentaDTO;
 import entityBean.Config;
 
-public class InformarLyMSincronico {
+public class InformarSincronicoLyM {
 
 	public static String informarVenta(VentaDTO venta, Config conf) {
 		System.out.println("***********************");
