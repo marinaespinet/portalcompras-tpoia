@@ -21,11 +21,11 @@ public interface AdministradorArticulo {
 
 	public Articulo registrarArticulo(Articulo a);
 
-	void asignarRanking(List<BestSellerDTO> list) throws Exception;
+	public void asignarRanking(List<BestSellerDTO> list) throws Exception;
 
 	public List<Articulo> getBestSellers();
 
-	List<Articulo> buscarArticulos(String criterio);
+	public List<Articulo> buscarArticulos(String criterio);
 
 	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo);
 
