@@ -18,6 +18,6 @@ public interface AdministradorArticulo {
 
 	void asignarRanking(int codigo, int posicion);
 
-	Articulo registrarArticulo(Articulo a);
+	public Articulo registrarArticulo(Articulo a);
 
 }
