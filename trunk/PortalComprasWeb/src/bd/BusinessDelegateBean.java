@@ -3,6 +3,7 @@ package bd;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 
@@ -17,7 +18,7 @@ import entityBean.Venta;
 import fachada.Fachada;
 
 @Stateless
-@Singleton
+@LocalBean
 public class BusinessDelegateBean implements BusinessDelegate {
 	
 	@EJB
