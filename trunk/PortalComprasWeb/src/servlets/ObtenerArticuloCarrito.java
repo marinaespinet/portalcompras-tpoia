@@ -52,7 +52,7 @@ public class ObtenerArticuloCarrito extends HttpServlet {
     	try {
     		Articulo articulo = facade.getArticuloPorId(id);
 			ItemCantidadDTO item = carrito.getItemCantidadDTO(articulo);
-	    	request.setAttribute("producto", item);
+	    	request.setAttribute("articulo", item);
     	}
     	catch (Exception e) {
         	request.setAttribute("error", e.getMessage());

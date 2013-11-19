@@ -48,7 +48,7 @@ function soloNumeros(evt){
 	</tr>
 
     <%  
-        Articulo articulo= (Articulo)request.getAttribute("Articulo"); 
+        Articulo articulo= (Articulo)request.getAttribute("articulo"); 
 	%>
 		<tr style="color:#FFFFFF;font-family: sans-serif">
 			<td><input type="text" size="8" style="color:#FFFFFF;font-family: sans-serif;background-color:transparent;border:0px solid white;" name="id" readonly="readonly" value=<%=articulo.getCodigo()%>></td>

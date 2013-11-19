@@ -44,7 +44,7 @@ public class ObtenerArticulo extends HttpServlet {
     	Integer id = Integer.valueOf(request.getParameter("id"));
     	try {
     		Articulo producto = facade.getArticuloPorId(id);
-	    	request.setAttribute("producto", producto);
+	    	request.setAttribute("articulo", producto);
     	}
     	catch (Exception e) {
         	request.setAttribute("error", e.getMessage());

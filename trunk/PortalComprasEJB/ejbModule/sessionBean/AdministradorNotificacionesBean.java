@@ -33,7 +33,7 @@ public class AdministradorNotificacionesBean implements AdministradorNotificacio
     }
 
     private String armarMensaje(String inicioMensaje ,Usuario u, int codArt){
-    	return inicioMensaje+" producto con codigo "+codArt+ " del carrito del usuario con ID:"+ u.getDni();
+    	return inicioMensaje+" articulo con codigo "+codArt+ " del carrito del usuario con ID:"+ u.getDni();
     }
 	@Override
 	public void notificarAgregadoArticuloCarrito(Usuario u, int codArt, int cant) {

@@ -1,11 +1,13 @@
 package entityBean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
 
 @Entity
 public class ConfigAsincronica extends Config{
 	
+	@Column(name="usuario")
 	private String user;
 	private String password;
 	

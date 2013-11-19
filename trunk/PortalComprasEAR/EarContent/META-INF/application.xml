@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:application="http://java.sun.com/xml/ns/javaee/application_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" id="Application_ID" version="6">
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+version="6" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd">
+
   <display-name>PortalComprasEAR</display-name>
   <module>
     <ejb>PortalComprasEJB.jar</ejb>
@@ -8,8 +10,6 @@
     <web>
       <web-uri>PortalComprasWeb.war</web-uri>
       <context-root>PortalWeb</context-root>
-      
     </web>
   </module>
-  <library-directory>lib</library-directory>
 </application>
