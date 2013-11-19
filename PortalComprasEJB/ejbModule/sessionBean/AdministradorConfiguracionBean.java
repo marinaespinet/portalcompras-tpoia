@@ -55,7 +55,7 @@ public class AdministradorConfiguracionBean implements AdministradorConfiguracio
 	@Override
 	public List<Config> getConfigsByFuncionalidad(String funcion) {
 		return em.createQuery(
-				"from Config c where c.funcionalidad = :funcion AND c.activa = 1").setParameter("funcion", funcion)
+				"from Config c where c.funcionalidad = :funcion AND c.activado = 1").setParameter("funcion", funcion)
 				.getResultList();
 	}
 

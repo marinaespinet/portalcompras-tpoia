@@ -59,6 +59,7 @@ public class LoginUsuario extends HttpServlet {
 
 					if (facade.loginValido(userDni, password)) {
 						Usuario u = facade.obtenerUsuario(userDni);
+						carrito.setUsuario(u);
 						session.setAttribute("usuario", u);
 						session.setAttribute("carrito", carrito);
 						resultPage = "/index.jsp";

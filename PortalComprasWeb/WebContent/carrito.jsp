@@ -43,10 +43,10 @@
   <td><%= it.getArticulo().getNombre()%></td>
   <td><%= it.getArticulo().getMarca()%></td>
   <td><%= it.getArticulo().getPrecio()%></td>
-  <td><%= it.getArticulo().getRanking()%></td>
-  <td><%= it.getArticulo().getCategoria().getNombre()%></td>
+  <td><%= it.getArticulo().getPosicion()%></td>
+  <td><%= it.getArticulo().getTipoString()%></td>
   <td><%=it.getCantidad()%></td>
-  <td><a href="ObtenerProductoCarrito?id=<%=it.getProducto().getId()%>">Editar</a><br></td>
+  <td><a href="ObtenerArticuloCarrito?id=<%=it.getArticulo().getCodigo()%>">Editar</a><br></td>
 </tr> 
 <% } %>
 </table>

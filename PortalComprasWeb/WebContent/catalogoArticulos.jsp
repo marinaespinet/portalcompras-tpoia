@@ -29,13 +29,13 @@
 	<form action="BusquedaArticulo" method="post">
 	<fieldset style="float: left; padding: 2em">
 	<legend style="color:#FFFFFF;font-family: sans-serif">Ingrese datos del articulo</legend>
-	<table border="0" cellpadding="0" width="100" bgcolor="#444444">
+	<table border="0" cellpadding="0" width="500" bgcolor="#444444">
 	<tr>
 	<td ><label for="Buscar" style="color:#FFFFFF;font-family: sans-serif">Buscar :</label></td>
-	<td><input type="text" name="criterio" value="" maxlength="100" /></td>
+	<td><input type="text" name="criterio" value="" maxlength="250" /></td>
 		
 	</tr>
-	<tr><td><input type="submit" name="buscar" value="" maxlength="100" /></td></tr>
+	<tr><td colspan="100"><input type="submit" name="buscar" value="buscar" maxlength="100" style=" width : 174px;" value="buscar"/></td></tr>
 	</table>
 	</fieldset>
 	</form>
