@@ -9,21 +9,21 @@
 <jsp:include page="menu.jsp"/>
  <br><br>
  <br><br>
- <table width="900px" align="center">
+ <table width="200px" style="background-color: #FFFFFF;" align="center">
  <tr>
  <td>
  <form name="form1" action="LoginUsuario" method="post">
  	<fieldset style="float: left; padding: 2em">
- 	<legend style="color:#FFFFFF;font-family: sans-serif">Login Portal de Compras</legend>
-	<table align="center" border="0" cellpadding="0" width="50" bgcolor="#2d2620">
+ 	<legend style="color:#AAAAAA;font-family: sans-serif;font-size:16px">Ingresar:</legend>
+	<table align="right" border="0" cellpadding="0" width="50" bgcolor="#CCCCCC" style="text-align: right; FONT-FAMILY: 'Verdana, Geneva, Arial, Helvetica, sans-serif';">
 		<tr>
-			<td><b style="color:#FFFFFF;font-family: sans-serif">Dni: </b></td>
+			<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Usuario: </td>
 			<td>
 				<input id="usuario" type="text" name="usuario">
 			</td>
 		</tr>
 		<tr>
-			<td><b style="color:#FFFFFF;font-family: sans-serif">Contraseña: </b></td>
+			<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Clave: </td>
 			<td>
 				<input id="password" type="password" name="password">
 			</td>
@@ -32,7 +32,7 @@
 			<td></td>
 			<td>
 				<input type="hidden" name="action" value="login">
-				<input type="submit" value="Ingresar" style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;">
+				<input class="button" type="submit" value="Ingresar">
 			</td>
 		</tr>
 	</table>

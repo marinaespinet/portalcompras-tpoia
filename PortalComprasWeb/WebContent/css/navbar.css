@@ -1,5 +1,5 @@
 html, body {
-	background: #444444;
+	background: #EEEEEE;
 	text-align: center;
 	margin: 0px;
 	height: 100%;
@@ -35,49 +35,58 @@ h1 {
 	width: 1000px;
 	float: left;
 	margin-top: -1px;
+	background-color: #FFFFFF;
 }
 #main-nav li {
 	display: inline;
 	list-style: none;
+	border-right: 1px solid #BBBBBB;
 }
 #main-nav li a {
 	margin-right: 5px;
 	font-size: 15px;
 	text-decoration: none;
-	color: #f2f2f2;
+	color: #888888;
 	font-family: Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	padding: 10px;
 	outline: 0;
 	position: relative;
 	top: -2px;
 }
 #main-nav li a:hover, #main-nav li a.active {
-	background: #888888;
+	background: #EEEEEE;
 }
 #sub-link-bar {
-	background: #666666;
+	position: relative;
+	top: 88px;
+	height: 40px;
+	display: block;
+	background: #FFF;
 	min-height: 10px;
-	border-bottom: #333333 1px solid;
+	border: #DDD 1px solid;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
 }
 .sub-links {
 	display: none;
 	position: absolute;
 	width: 100%;
-	top: -30px;
+	top: 60px;
 	text-align: left;
 	left: 0px;
 }
 #main-nav li .sub-links li a:hover{
-	background: #222222;
+	background: #EEEEEE;
 }
 #main-nav li a.close{
 	display: none;	
 	position: absolute;
 }
 #main-nav li a.close:hover{
-	background: #900;
+	background: #EEEEEE;
 }
 <!--Thanks Spiffy Corners--> 
 .round {
@@ -88,40 +97,40 @@ h1 {
 	height:1px;
 	overflow:hidden;
 	font-size:.01em;
-	background:#666666
+	background:#CCCCCC;
 }
 .round1 {
 	margin-left:3px;
 	margin-right:3px;
 	padding-left:1px;
 	padding-right:1px;
-	border-left:1px solid #444444;
-	border-right:1px solid #444444;
-	background:##222244
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	background:##CCCCCC
 }
 .round2 {
 	margin-left:1px;
 	margin-right:1px;
 	padding-right:1px;
 	padding-left:1px;
-	border-left:1px solid #333333;
-	border-right:1px solid #333333;
-	background:#666666;
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
+	background:#CCCCCC;
 }
 .round3 {
 	margin-left:1px;
 	margin-right:1px;
-	border-left:1px solid #666666;
-	border-right:1px solid #666666;
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
 }
 .round4 {
-	border-left:1px solid #444444;
-	border-right:1px solid #444444;
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
 }
 .round5 {
-	border-left:1px solid #eeffff;
-	border-right:1px solid #eeffff
+	border-left:1px solid #CCCCCC;
+	border-right:1px solid #CCCCCC;
 }
 .roundfg {
-	background:##444444
+	background:#FFFFFF;
 }
