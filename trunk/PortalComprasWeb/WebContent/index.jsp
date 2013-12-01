@@ -7,6 +7,6 @@
 <body>
 <jsp:include page="menu.jsp"/>
 <br><br>
-<p style="font-size: 35; "><b style="FONT-SIZE: xx-large; COLOR: #ffffff;">PORTAL DE COMPRAS</b></p><br>
+<p style="font-size: 35; "><b style="FONT-SIZE: xx-large; COLOR: #444444;">PORTAL DE COMPRAS</b></p><br>
 </body>
 </html>

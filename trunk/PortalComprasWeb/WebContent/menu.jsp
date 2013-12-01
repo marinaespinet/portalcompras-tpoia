@@ -8,8 +8,15 @@
 <html>
 <body>
 
+    <% if (u!=null) { %>
+    		<div style="margin-right: 200px;margin-top:10px;color: #999999;font-family: sans-serif;text-align: right;font-size: 12px;font-weight: bold;">Usuario: <%=u.getNombre() %></div>
+   	<% } %>
+
+<!-- Start sub-link-bar -->
 <div id="sub-link-bar"> </div>
 <!-- End sub-link-bar -->
+
+<!-- Start wrap -->
 <div id="wrap">
   <div id="main-handle">
     <div class="roundfg">
@@ -53,17 +60,16 @@
             <% }
 			}%>           
           
-        </li>
-         <li><a class="close" title="Click para cerrar" href="#">X</a></li>
+         <!--</li >
+         <li style="margin-left:515px;"><a class="close" title="Click para cerrar" href="#">SALIR</a></li> -->
       </ul>
     </div>
     <!-- End roundfg -->
     <b class="round"> <b class="round5"></b> <b class="round4"></b> <b class="round3"></b> <b class="round2"><b></b></b> <b class="round1"><b></b></b></b> </div>
   <!-- End main-handle-->
-    <% if (u!=null) { %>
-    		<b style="color:#FFFFFF;font-family: sans-serif; text-align:right; font-size: x-small;">Usuario: <%=u.getNombre() %></b>
-   	<% } %>
+
  </div>
+<!-- End wrap -->
 
 </body>
 </html>
