@@ -32,7 +32,7 @@
 
 </head>
 <body>
-	<jsp:include page="menu.jsp"/>
+	<jsp:include page="menu.jsp" />
 	<br>
 	<br>
 	<br>
@@ -57,12 +57,12 @@
 			<tr style="color: #FFFFFF; font-family: sans-serif">
 				<td><input type="text" size="8"
 					style="color: #FFFFFF; font-family: sans-serif; background-color: transparent; border: 0px solid white;"
-					name="id" readonly="readonly" value="<%=ic.getArticulo().getCodigo() %>"
-					></td>
+					name="id" readonly="readonly"
+					value="<%=ic.getArticulo().getCodigo()%>"></td>
 				<td><%=ic.getArticulo().getNombre()%></td>
 				<td><%=ic.getArticulo().getMarca()%></td>
 				<td><%=ic.getArticulo().getPrecio()%></td>
-				<td><%=ic.getArticulo().getPosicion() %></td>
+				<td><%=ic.getArticulo().getPosicion()%></td>
 				<td><%=ic.getArticulo().getTipo().toString()%></td>
 				<td><input type="text" onkeypress="return soloNumeros(event)"
 					name="cantidad" value=<%=ic.getCantidad()%>></td>
