@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import entityBean.Articulo;
 
@@ -22,6 +23,7 @@ public class ItemCantidadDTO implements Serializable {
 	@XmlElement
 	private int cantidad;
 	
+	@XmlTransient
 	private Articulo articulo;
 	
 	public int getCodigoArticulo() {

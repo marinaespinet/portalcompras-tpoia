@@ -90,8 +90,8 @@ public class FachadaBean implements Fachada, Serializable {
 		ConfigSincronica c = new ConfigSincronica();
 		c.setActivado(true);
 		c.setFuncionalidad(EFuncionalidad.venta.toString());
-		c.setIp("172.16.174.54");
-		c.setNombre("Logistica y Monitoreo G15");
+		c.setIp("172.16.174.36");
+		c.setNombre("Logistica y Monitoreo G17");
 		c.setPuerto("8080");
 		c.setUrl("LogisticaMonitoreo/LogisticaMonitoreoWS");
 		adminConfiguracion.addConfig(c);
@@ -99,8 +99,8 @@ public class FachadaBean implements Fachada, Serializable {
 		ConfigSincronica c3 = new ConfigSincronica();
 		c3.setActivado(true);
 		c3.setFuncionalidad(EFuncionalidad.log.toString());
-		c3.setIp("172.16.174.54");
-		c3.setNombre("Logistica y Monitoreo G15");
+		c3.setIp("172.16.174.36");
+		c3.setNombre("Logistica y Monitoreo G17");
 		c3.setPuerto("8080");
 		c3.setUrl("LogisticaMonitoreo/LogisticaMonitoreoWS");
 		adminConfiguracion.addConfig(c3);
@@ -108,12 +108,13 @@ public class FachadaBean implements Fachada, Serializable {
 		ConfigAsincronica c2 = new ConfigAsincronica();
 		c2.setActivado(false);
 		c2.setFuncionalidad(EFuncionalidad.log.toString());
-		c2.setIp("172.16.174.54");
+		c2.setIp("172.16.174.36");
 		c2.setPuerto("4447");
-		c2.setNombre("Logistica y Monitoreo G15");
+		c2.setNombre("Logistica y Monitoreo G17");
 		c2.setUser("log");
 		c2.setPassword("log1234");
 		adminConfiguracion.addConfig(c2);
+		
 	}
 
 	@Override

@@ -31,8 +31,7 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 
 	@Override
 	public Articulo registrarArticulo(Articulo a) {
-		em.persist(a);
-		return a;
+		return em.merge(a);
 	}
 
 	@Override

@@ -114,10 +114,11 @@ public class Carrito extends HttpServlet {
 				}
 				if ("save".equals(action)) {
 					Usuario u = (Usuario) session.getAttribute("usuario");
-					request.setAttribute("mensaje",
-							"Compra realizada exitosamente.");
+					
 					try {
 						carrito.realizarVenta();
+						request.setAttribute("mensaje",
+								"Compra realizada exitosamente.");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

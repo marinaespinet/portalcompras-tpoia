@@ -24,13 +24,13 @@
 							<tr>
 								<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Usuario(Dni):
 								</td>
-								<td><input id="usuario" type="text" name="usuario">
+								<td><input id="usuario" type="text" name="usuario" value="1234">
 								</td>
 							</tr>
 							<tr>
 								<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Clave:
 								</td>
-								<td><input id="password" type="password" name="password">
+								<td><input id="password" type="password" name="password" value="1234">
 								</td>
 							</tr>
 							<tr>
