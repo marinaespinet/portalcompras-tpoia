@@ -30,7 +30,9 @@
 		}
 	}
 </script>
-
+<%
+	Usuario u = (Usuario) session.getAttribute("usuario");
+%>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -43,32 +45,34 @@
 			onsubmit="return validar();">
 			<table class="tablesorter">
 				<tr>
-					<td><b>Id</b></td>
 					<td><b>Nombre</b></td>
 					<td><b>Marca</b></td>
 					<td><b>Precio</b></td>
 					<td><b>Categoria</b></td>
 					<td><b>Descripcion</b></td>
-					<td><b>Cantidad</b></td>
-					<td><b> </b></td>
+					<%if(u!=null){ %>
+						<td><b>Cantidad</b></td>
+						<td><b> </b></td>
+					<%} %>
 				</tr>
 
 				<%
 					Articulo articulo = (Articulo) request.getAttribute("articulo");
 				%>
 				<tr style="color: #FFFFFF; font-family: sans-serif">
-					<td><input type="text" size="8"
-						style="color: #666666; font-family: sans-serif; background-color: transparent; border: 0px solid white;"
-						name="id" readonly="readonly" value=<%=articulo.getCodigo()%>></td>
 					<td><%=articulo.getNombre()%></td>
 					<td><%=articulo.getMarca()%></td>
 					<td><%=articulo.getPrecio()%></td>
 					<td><%=articulo.getTipo().toString()%></td>
 					<td><%=articulo.getDescripcion()%></td>
+					<%if(u!=null){ %>
 					<td><input type="text" onkeypress="return soloNumeros(event)"
 						name="cantidad" value=0></td>
-					<td><input class="button" type="submit" value="Agregar"
-						name="add"><input type="hidden" name="action" value="add"></td>
+					<td><input type="hidden" 
+						name="id" readonly="readonly" value="<%=articulo.getCodigo()%>"/>
+						<input class="button" type="submit" value="Agregar"
+						name="add"><input type="hidden" name="action" value="add"/></td>
+						<%} %>
 				</tr>
 			</table>
 		</form>

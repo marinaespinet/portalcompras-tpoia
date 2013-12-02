@@ -19,6 +19,12 @@
 	<br>
 	<br>
 	<%
+		String mensaje = (String) request.getAttribute("mensaje");
+	%>
+	<%if(mensaje !=null) {%>
+			<b style="color: #ff0000; font-family: sans-serif; font-size:16"><%=mensaje%></b>
+		<%} %>
+	<%
 		List<ItemCantidadDTO> items = (List<ItemCantidadDTO>) request
 				.getAttribute("items");
 		if (items != null && items.size() > 0) {
@@ -29,7 +35,7 @@
 		<table border="0" cellpadding="0" width="100%"
 			style="color: #FFFFFF; font-family: sans-serif">
 			<tr>
-				<td><b>Id</b></td>
+				<td><b>#</b></td>
 				<td><b>Nombre</b></td>
 				<td><b>Marca</b></td>
 				<td><b>Precio</b></td>
@@ -44,7 +50,7 @@
 						ItemCantidadDTO it = items.get(i);
 			%>
 			<tr>
-				<td><%=it.getArticulo().getCodigo()%></td>
+				<td><%=i+1%></td>
 				<td><%=it.getArticulo().getNombre()%></td>
 				<td><%=it.getArticulo().getMarca()%></td>
 				<td><%=it.getArticulo().getPrecio()%></td>
@@ -61,7 +67,7 @@
 		<p>
 	</center>
 	<form name="form1" action="Carrito" method="POST">
-		<input type="submit" name="save" value="Confirmar carrito"
+		<input type="submit" name="save" value="Comprar"
 			style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;"> <input
 			type="hidden" name="action" value="save">
 	</form>
@@ -69,7 +75,10 @@
 
 	<%
 		}else{
-	%> <p>No hay productos seleccionados en el carrito</p>
+			
+	%>
+	<p>No hay productos seleccionados en el carrito</p>
+		
 	<%} %>
 
 </body>

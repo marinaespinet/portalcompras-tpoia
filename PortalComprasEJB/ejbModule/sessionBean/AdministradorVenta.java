@@ -15,6 +15,7 @@ public interface AdministradorVenta {
 	public List<Venta> getVentasByUsuario(Usuario u);
 	public void registrarVenta(Venta v) throws Exception;
 	public Venta modificarVenta(Venta v) throws Exception;
+	public void eliminarVenta(Venta v);
 	
 
 }

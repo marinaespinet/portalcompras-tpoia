@@ -52,53 +52,7 @@
 		</form>
 	</div>
 
-	<div style="width: 1000px; background-color: #FFFFFF; margin: auto;">
-		<div style="width: 960px; margin: auto; padding-top:140px; padding-bottom:20px;">
-			<table id="prods" class="tablesorter">
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Marca</th>
-						<th>Precio</th>
-						<th>Ranking</th>
-						<th>Categor&iacute;a</th>
-						<th>Fecha</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						List<Articulo> productos = (List<Articulo>) request
-								.getAttribute("listado");
-						Iterator<Articulo> itProd = productos.iterator();
-						int rotar = 0;
-						String clase = "";
-						while (itProd.hasNext()) {
-							Articulo articulo = itProd.next();
-							if (rotar % 2 != 0)
-								clase = "\"alt\"";//System.out.println("<tr class=\"alt\">");
-							else
-								clase = "\"\"";//System.out.println("<tr>");
-					%>
-					<tr class=<%=clase%>>
-						<td><a <%if( session.getAttribute("usuario") != null) {%>href="ObtenerArticulo?id=<%=articulo.getCodigo()%><%} %>"><%=articulo.getNombre()%></a> </td>
-						<td><%=articulo.getMarca()%></td>
-						<td><%=articulo.getPrecio()%></td>
-						<td><%=(articulo.getPosicion()==null)?"Sin Ranking":articulo.getPosicion()%></td>
-						<td><%=articulo.getTipo().toString()%></td>
-						<td><%=FechaUtil.toStringXml(articulo.getFecha())%></td>
-					</tr>
-					<%
-						rotar++;
-						}
-					%>
-				</tbody>
-			</table>
-		</div>
-	</div>
+	<jsp:include page="listadoArticulos.jsp" />
 	<br>
-	</div>
-	<!-- End wrap -->
-
-
 </body>
 </html>

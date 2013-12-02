@@ -68,7 +68,7 @@ public class FachadaBean implements Fachada, Serializable {
 		a.setMarca("marca");
 		a.setNombre("nombre");
 		a.setOrigen("origen");
-		a.setPosicion(null);
+		a.setPosicion(1);
 		a.setPrecio(50.5f);
 		adminArticulo.registrarArticulo(a);
 		

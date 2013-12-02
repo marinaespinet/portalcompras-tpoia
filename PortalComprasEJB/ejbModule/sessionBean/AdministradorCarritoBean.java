@@ -30,7 +30,7 @@ public class AdministradorCarritoBean implements AdministradorCarrito {
 	private AdministradorNotificaciones adminNotificaciones;
 	@EJB
 	private AdministradorVenta adminVenta;
-	
+
 	private Map<Integer, ItemCantidadDTO> articulosCantidad = new HashMap<Integer, ItemCantidadDTO>();
 	private Map<Integer, Articulo> mapaArticulos = new HashMap<Integer, Articulo>();
 
@@ -45,45 +45,72 @@ public class AdministradorCarritoBean implements AdministradorCarrito {
 
 	@Override
 	public Venta realizarVenta() throws Exception {
-		
+
 		Venta v = new Venta();
 		v.setCoordenadaX(usuario.getCoordenadaX());
 		v.setCoordenadaY(usuario.getCoordenadaY());
 		v.setItemsVenta(new LinkedList<ItemVenta>());
-		for(Integer cod: articulosCantidad.keySet()){
-			v.getItemsVenta().add(new ItemVenta(mapaArticulos.get(cod), articulosCantidad.get(cod).getCantidad()));
+		for (Integer cod : articulosCantidad.keySet()) {
+			v.getItemsVenta().add(
+					new ItemVenta(mapaArticulos.get(cod), articulosCantidad
+							.get(cod).getCantidad()));
 		}
 		v.setFecha(FechaUtil.getFechaActual());
 		v.setEstado(EEstadoVenta.Cheackout.name());
 		v.setUsuario(usuario);
 		adminVenta.registrarVenta(v);
-		
-		ResultadoDTO res = adminNotificaciones.informarVenta(usuario, v);
-		if(res.getEstado().equalsIgnoreCase(EEstadoRetorno.OK.toString())){
+
+		ResultadoDTO res;
+		try {
+			res = adminNotificaciones.informarVenta(usuario, v);
+		} catch (Exception e) {
+			// no se pudo concretar la conexion con LyM asi q elimino la venta
+			// COMENTAR ESTO, SOLO PARA TEST
+			if (true) {
+				v.setEstado(EEstadoVenta.Aceptada.toString());
+				adminVenta.modificarVenta(v);
+				limpiarCarrito();
+				return v;
+			}
+			adminVenta.eliminarVenta(v);
+			throw new Exception(
+					"No se pudo realizar la compra exitosamente debido a problemas en la conexion. Vuelva a intetnarlo mas tarde");
+		}
+		if (res.getEstado().equalsIgnoreCase(EEstadoRetorno.OK.toString())) {
 			v.setEstado(EEstadoVenta.Aceptada.toString());
-			
-		}else{
+
+		} else {
 			v.setEstado(EEstadoVenta.Rechazada.toString());
 		}
+
 		adminVenta.modificarVenta(v);
+		limpiarCarrito();
 		return v;
 	}
 
-	@Override
-	public void agregarArticulo(int codigo, int cant) {
-		Articulo a = adminArticulo.buscarArticulo(codigo);
-		mapaArticulos.put(codigo, a);
-		if (articulosCantidad.containsKey(codigo)) {
-			modificarCantidad(codigo, articulosCantidad.get(codigo).getCantidad() + cant);
-		} else {
-			articulosCantidad.put(codigo, new ItemCantidadDTO(a, cant));
-			adminNotificaciones.notificarAgregadoArticuloCarrito(usuario, codigo, cant);
-		}
-		
+	private void limpiarCarrito() {
+		this.mapaArticulos.clear();
+		this.articulosCantidad.clear();
+
 	}
 
 	@Override
-	public void quitarArticulo(int codigo) {
+	public void agregarArticulo(int codigo, int cant) throws Exception {
+		Articulo a = adminArticulo.buscarArticulo(codigo);
+		mapaArticulos.put(codigo, a);
+		if (articulosCantidad.containsKey(codigo)) {
+			modificarCantidad(codigo, articulosCantidad.get(codigo)
+					.getCantidad() + cant);
+		} else {
+			articulosCantidad.put(codigo, new ItemCantidadDTO(a, cant));
+			adminNotificaciones.notificarAgregadoArticuloCarrito(usuario,
+					codigo, cant);
+		}
+
+	}
+
+	@Override
+	public void quitarArticulo(int codigo) throws Exception {
 		articulosCantidad.remove(codigo);
 		mapaArticulos.remove(codigo);
 		adminNotificaciones.notificarBajaArticuloCarrito(usuario, codigo);
@@ -91,14 +118,15 @@ public class AdministradorCarritoBean implements AdministradorCarrito {
 	}
 
 	@Override
-	public void modificarCantidad(int codigo, int cantidad) {
+	public void modificarCantidad(int codigo, int cantidad) throws Exception {
 		if (cantidad <= 0) {
 			quitarArticulo(codigo);
 		} else {
 			ItemCantidadDTO item = articulosCantidad.get(codigo);
 			item.setCantidad(cantidad);
 			articulosCantidad.put(codigo, item);
-			adminNotificaciones.notificarModificacionesArticuloCarrito(usuario, codigo, cantidad);
+			adminNotificaciones.notificarModificacionesArticuloCarrito(usuario,
+					codigo, cantidad);
 		}
 
 	}
