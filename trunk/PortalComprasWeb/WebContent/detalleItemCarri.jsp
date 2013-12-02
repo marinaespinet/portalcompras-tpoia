@@ -6,6 +6,9 @@
 <head>
 <jsp:include page="head.jsp" flush="true" />
 
+<link rel="stylesheet" href="css/tablesorter.css" type="text/css" id=""
+	media="print, projection, screen" />
+
 <script type="text/javascript">
 	function validar() {
 		if (document.form1.cantidad.value == ''
@@ -35,45 +38,51 @@
 	<jsp:include page="menu.jsp" />
 	<br>
 	<br>
-	<br>
-	<h1>Detalle del Carrito</h1>
-	<form name="form1" action="Carrito" method="POST"
-		onsubmit="return validar();">
-		<table>
-			<tr style="color: #FFFFFF; font-family: sans-serif">
-				<td><b>Id</b></td>
-				<td><b>Nombre</b></td>
-				<td><b>Marca</b></td>
-				<td><b>Precio</b></td>
-				<td><b>Ranking</b></td>
-				<td><b>Categoria</b></td>
-				<td><b>Cantidad</b></td>
-			</tr>
+	<h1 style="color: #444444; margin-top: -10px;">Detalle del Carrito</h1>
+	<div style="width: 1000px; background-color: #FFFFFF; margin: auto;">
+		<div
+			style="width: 960px; margin: auto; padding-top: 20px; padding-bottom: 20px;">
+			<form name="form1" action="Carrito" method="POST"
+				onsubmit="return validar();">
 
-			<%
-				ItemCantidadDTO ic = (ItemCantidadDTO) request
-						.getAttribute("articulo");
-			%>
-			<tr style="color: #FFFFFF; font-family: sans-serif">
-				<td><input type="text" size="8"
-					style="color: #FFFFFF; font-family: sans-serif; background-color: transparent; border: 0px solid white;"
-					name="id" readonly="readonly"
-					value="<%=ic.getArticulo().getCodigo()%>"></td>
-				<td><%=ic.getArticulo().getNombre()%></td>
-				<td><%=ic.getArticulo().getMarca()%></td>
-				<td><%=ic.getArticulo().getPrecio()%></td>
-				<td><%=ic.getArticulo().getPosicion()%></td>
-				<td><%=ic.getArticulo().getTipo().toString()%></td>
-				<td><input type="text" onkeypress="return soloNumeros(event)"
-					name="cantidad" value=<%=ic.getCantidad()%>></td>
-			</tr>
-		</table>
-		<input type="submit" value="Actualizar" name="actualizar"
-			style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;"> <input
-			type="hidden" name="action" value="update"><br> <input
-			type="submit" value="Eliminar" name="delete"
-			style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;">
-	</form>
+				<table class="tablesorter">
+
+					<tr style="color: #FFFFFF; font-family: sans-serif">
+						<td><b>Id</b></td>
+						<td><b>Nombre</b></td>
+						<td><b>Marca</b></td>
+						<td><b>Precio</b></td>
+						<td><b>Ranking</b></td>
+						<td><b>Categoria</b></td>
+						<td><b>Cantidad</b></td>
+					</tr>
+
+					<%
+						ItemCantidadDTO ic = (ItemCantidadDTO) request
+								.getAttribute("articulo");
+					%>
+					<tr style="color: #FFFFFF; font-family: sans-serif">
+						<td><input type="text" size="8"
+							style="color: #FFFFFF; font-family: sans-serif; background-color: transparent; border: 0px solid white;"
+							name="id" readonly="readonly"
+							value="<%=ic.getArticulo().getCodigo()%>"></td>
+						<td><%=ic.getArticulo().getNombre()%></td>
+						<td><%=ic.getArticulo().getMarca()%></td>
+						<td><%=ic.getArticulo().getPrecio()%></td>
+						<td><%=ic.getArticulo().getPosicion()%></td>
+						<td><%=ic.getArticulo().getTipo().toString()%></td>
+						<td><input type="text" onkeypress="return soloNumeros(event)"
+							name="cantidad" value=<%=ic.getCantidad()%>></td>
+					</tr>
+				</table>
+				<input type="submit" value="Actualizar" name="actualizar"
+					style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;"> <input
+					type="hidden" name="action" value="update"><br> <input
+					type="submit" value="Eliminar" name="delete"
+					style="FONT-FAMILY: 'Verdana'; FONT-SIZE: x-small;">
+			</form>
+		</div>
+	</div>
 	<br>
 </body>
 </html>
