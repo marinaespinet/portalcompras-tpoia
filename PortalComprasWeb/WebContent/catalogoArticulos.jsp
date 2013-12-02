@@ -80,10 +80,10 @@
 								clase = "\"\"";//System.out.println("<tr>");
 					%>
 					<tr class=<%=clase%>>
-						<td><a href="ObtenerArticulo?id=<%=articulo.getCodigo()%>"><%=articulo.getNombre()%></a></td>
+						<td><a <%if( session.getAttribute("usuario") != null) {%>href="ObtenerArticulo?id=<%=articulo.getCodigo()%><%} %>"><%=articulo.getNombre()%></a> </td>
 						<td><%=articulo.getMarca()%></td>
 						<td><%=articulo.getPrecio()%></td>
-						<td><%=articulo.getPosicion()%></td>
+						<td><%=(articulo.getPosicion()==null)?"Sin Ranking":articulo.getPosicion()%></td>
 						<td><%=articulo.getTipo().toString()%></td>
 						<td><%=FechaUtil.toStringXml(articulo.getFecha())%></td>
 					</tr>

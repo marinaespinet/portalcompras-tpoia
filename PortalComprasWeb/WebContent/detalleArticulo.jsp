@@ -89,7 +89,7 @@
 				</tr>
 				<tr>
 					<td><%=articulo.obtenerCaracteristicas()%></td>
-					<td><a href="<%=articulo.getFoto()%>" target="_blank"><%=articulo.getFoto()%></a></td>
+					<td><%if(articulo.getFoto()!=null && !articulo.getFoto().isEmpty()){ %><img alt="Imagen del articulo" src="<%=articulo.getFoto()%>" target="_blank"/><%}else{ %> No disponible <%} %></td>
 				</tr>
 			</tbody>
 		</table>

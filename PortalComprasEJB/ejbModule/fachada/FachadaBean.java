@@ -64,7 +64,7 @@ public class FachadaBean implements Fachada, Serializable {
 		a.setDescripcion("asd");
 		a.setFecha(FechaUtil.getFechaActual());
 		a.setFichaTecnica("ficha tecnic");
-		a.setFoto("foto.jpg");
+		a.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
 		a.setMarca("marca");
 		a.setNombre("nombre");
 		a.setOrigen("origen");
