@@ -22,7 +22,7 @@
 							bgcolor="#CCCCCC"
 							style="text-align: right; FONT-FAMILY: 'Verdana, Geneva, Arial, Helvetica, sans-serif';">
 							<tr>
-								<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Usuario:
+								<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Usuario(Dni):
 								</td>
 								<td><input id="usuario" type="text" name="usuario">
 								</td>
@@ -45,13 +45,12 @@
 							if (error == null)
 								error = "";
 						%>
-						<b style="color: #FFFFFF; font-family: sans-serif"><%=error%></b>
+						<b style="color: #ff0000; font-family: sans-serif"><%=error%></b>
 
 					</fieldset>
 				</form>
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>

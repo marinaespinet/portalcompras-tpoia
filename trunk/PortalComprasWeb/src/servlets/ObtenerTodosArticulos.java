@@ -59,7 +59,7 @@ public class ObtenerTodosArticulos extends HttpServlet {
         			request.setAttribute("listado", listado);
         		}
         		else {
-        			ETipoArticulo categoria = ETipoArticulo.valueOf(tipoBuscado);
+        			ETipoArticulo categoria = ETipoArticulo.valueOf(tipoBuscado.substring(0,1).toUpperCase()+tipoBuscado.substring(1).toLowerCase());
         			listado = facade.getArticulosPorTipo(categoria);
         			request.setAttribute("listado", listado);
         		}				

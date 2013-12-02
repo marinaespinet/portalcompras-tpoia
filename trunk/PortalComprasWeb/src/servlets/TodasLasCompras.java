@@ -19,8 +19,8 @@ import entityBean.Venta;
 /**
  * Servlet implementation class TodosLosPedidos
  */
-@WebServlet("/TodasLasVentas")
-public class TodasLasVentas extends HttpServlet {
+@WebServlet("/TodasLasCompras")
+public class TodasLasCompras extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -30,7 +30,7 @@ public class TodasLasVentas extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TodasLasVentas() {
+	public TodasLasCompras() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -51,7 +51,7 @@ public class TodasLasVentas extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		String resultPage = "/historialDeVentas.jsp";
+		String resultPage = "/historialDeCompras.jsp";
 		if (request.getSession().getAttribute("usuario") == null) {
 			resultPage = "/login.jsp";
 		} else {

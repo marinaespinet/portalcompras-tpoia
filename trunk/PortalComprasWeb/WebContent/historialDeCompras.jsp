@@ -15,12 +15,12 @@
 	<br>
 	<br>
 	<br>
-	<h1>Historial de Ventas</h1>
+	<h1>Historial de Compras</h1>
 	<div class="datagrid">
 		<table>
 			<thead>
 				<tr>
-					<th>Nro de Venta</th>
+					<th>Nro de Compra</th>
 					<th>Estado</th>
 					<th>Fecha</th>
 					<th>Contenido</th>
@@ -28,7 +28,7 @@
 			</thead>
 			<tbody>
 				<%
-					List<Venta> ventas = (List<Venta>) request.getAttribute("Ventas");
+					List<Venta> ventas = (List<Venta>) request.getAttribute("ventas");
 					Iterator<Venta> itPed = ventas.iterator();
 					int rotar = 0;
 					String clase = "";

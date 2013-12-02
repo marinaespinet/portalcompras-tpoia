@@ -49,8 +49,8 @@
     <servlet-class>servlets.ObtenerTodosArticulos</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>TodasLasVentas</servlet-name>
-    <servlet-class>servlets.TodasLasVentas</servlet-class>
+    <servlet-name>TodasLasCompras</servlet-name>
+    <servlet-class>servlets.TodasLasCompras</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AgregarConfiguracion</servlet-name>
@@ -97,7 +97,7 @@
     <url-pattern>/ObtenerTodosArticulos/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>TodasLasVentas</servlet-name>
-    <url-pattern>/TodasLasVentas/*</url-pattern>
+    <servlet-name>TodasLasCompras</servlet-name>
+    <url-pattern>/TodasLasCompras/*</url-pattern>
   </servlet-mapping>
 </web-app>

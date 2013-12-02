@@ -68,8 +68,9 @@
 
 
 	<%
-		}
-	%>
+		}else{
+	%> <p>No hay productos seleccionados en el carrito</p>
+	<%} %>
 
 </body>
 </html>

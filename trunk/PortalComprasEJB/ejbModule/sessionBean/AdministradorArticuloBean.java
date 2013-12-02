@@ -113,7 +113,7 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo) {
 		return (List<Articulo>)em.createQuery("select a "
 				+ "from Articulo a "
-				+ "where a.tipo =:tipo").setParameter("tipo", tipo).getResultList();
+				+ "where a.tipoString =:tipo").setParameter("tipo", tipo.toString()).getResultList();
 	}
 	
 	@Override

@@ -16,11 +16,14 @@
 	<div
 		style="margin-right: 200px; margin-top: 10px; color: #999999; font-family: sans-serif; text-align: right; font-size: 12px; font-weight: bold;">
 		Usuario:
-		<%=u.getNombre()%></div>
+		<%=u.getNombre()%> - <a href="LogoutUsuario" title="Logout">Logout</a></div>
 	<%
-		}
-	%>
-
+		}else{
+	%><div
+		style="margin-right: 200px; margin-top: 10px; color: #999999; font-family: sans-serif; text-align: right; font-size: 12px; font-weight: bold;">
+		<a href="LoginUsuario" title="Login">Login</a></div>
+		<%} %>
+	
 	<!-- Start sub-link-bar -->
 	<div id="sub-link-bar"></div>
 	<!-- End sub-link-bar -->
@@ -37,15 +40,15 @@
 					<li><a class="main-link"
 						href="ObtenerTodosArticulos?action=listar">Articulos</a>
 						<ul class="sub-links">
-							<li><a href="ObtenerTodosArticulos?cat=moda&action=listar"
+							<li><a href="ObtenerTodosArticulos?cat=Moda&action=listar"
 								title="Ver todos los articulos de Moda">Moda</a></li>
 							<li><a
-								href="ObtenerTodosArticulos?cat=electro&action=listar"
-								title="Ver todos los articulos de Electro">Electro</a></li>
-							<li><a href="ObtenerTodosArticulos?cat=niños&action=listar"
+								href="ObtenerTodosArticulos?cat=Electrodomestico&action=listar"
+								title="Ver todos los articulos de Electro">Electrodomesticos</a></li>
+							<li><a href="ObtenerTodosArticulos?cat=Nino&action=listar"
 								title="Ver todos los articulos de Niños">Niños</a></li>
 							<li><a
-								href="ObtenerTodosArticulos?cat=muebles&action=listar"
+								href="ObtenerTodosArticulos?cat=Mueble&action=listar"
 								title="Ver todos los articulos de Muebles">Muebles</a></li>
 						</ul></li>
 					<li><a class="main-link" href="ObtenerBestSellers">Mas
@@ -54,26 +57,12 @@
 							<li><a href="ObtenerBestSellers" title="Best sellers">Ver
 									articulos mas vendidos</a></li>
 						</ul></li>
-					<li><a class="main-link" href="LoginUsuario">Usuario</a>
-						<ul class="sub-links">
-							<%
-								if (u == null) {
-							%>
-							<li><a href="LoginUsuario" title="Login">Login</a></li>
-							<%
-								}
-								if (u != null) {
-							%>
-							<li><a href="LogoutUsuario" title="Logout">Logout</a></li>
-							<%
-								}
-							%>
-						</ul> <%
+						 <%
  	if (u != null) {
  %>
 					<li><a href="Carrito" title="Carrito">Ver Carrito</a></li>
-					<li><a href="TodasLasVentas" title="Ventas">Historial de
-							Ventas</a></li>
+					<li><a href="TodasLasCompras" title="Ventas">Historial de
+							Compras</a></li>
 					<%
 						if (u.isAdministrador()) {
 					%>
