@@ -52,5 +52,9 @@ public class ResultadoDTO {
 	public static ResultadoDTO getResultadoError(String mensaje) {
 		return new ResultadoDTO(EEstadoRetorno.ERROR, mensaje);
 	}
+	
+	public boolean isError(){
+		return this.estado.equalsIgnoreCase(EEstadoRetorno.ERROR.toString());
+	}
 
 }

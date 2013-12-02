@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Venta implements Serializable {
 	private double coordenadaY;
 	private Timestamp fecha;
 	//private float montoTotal;
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER , cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name = "venta")
 	private List<ItemVenta> itemsVenta;
 	private String estado;

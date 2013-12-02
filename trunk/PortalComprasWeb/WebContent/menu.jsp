@@ -51,18 +51,24 @@
 								href="ObtenerTodosArticulos?cat=Mueble&action=listar"
 								title="Ver todos los articulos de Muebles">Muebles</a></li>
 						</ul></li>
-					<li><a class="main-link" href="ObtenerBestSellers">Mas
-							Vendidos</a>
+					<li><a class="main-link" href="ObtenerBestSellers">Ranking de Mas Vendidos</a>
 						<ul class="sub-links">
 							<li><a href="ObtenerBestSellers" title="Best sellers">Ver
 									articulos mas vendidos</a></li>
 						</ul></li>
-						 <%
- 	if (u != null) {
- %>
-					<li><a href="Carrito" title="Carrito">Ver Carrito</a></li>
-					<li><a href="TodasLasCompras" title="Ventas">Historial de
-							Compras</a></li>
+					<%
+						if (u != null) {
+					%>
+					<li><a class="main-link" href="Carrito" title="Carrito">Carrito</a>
+						<ul class="sub-links">
+							<li><a href="Carrito" title="Carrito">Carrito</a></li>
+						</ul></li>
+					<li><a class="main-link" href="TodasLasCompras" title="Ventas">Compras
+							Realizadas</a>
+						<ul class="sub-links">
+							<li><a href="TodasLasCompras" title="Ventas">Ver Compras
+									Realizadas</a></li>
+						</ul></li>
 					<%
 						if (u.isAdministrador()) {
 					%>
@@ -75,7 +81,7 @@
 						</ul></li>
 					<%
 						}
-						}
+					}
 					%>
 
 					<!--</li >

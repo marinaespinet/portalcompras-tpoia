@@ -56,5 +56,9 @@ public class AdministradorVentaBean implements AdministradorVenta {
 	public Venta modificarVenta(Venta v) throws Exception{
 		return em.merge(v);
 	}
+	@Override
+	public void eliminarVenta(Venta v) {
+		em.remove(v);
+	}
 
 }
