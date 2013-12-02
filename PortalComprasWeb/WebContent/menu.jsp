@@ -9,23 +9,30 @@
 %>
 <html>
 <body>
-
-	<%
-		if (u != null) {
-	%>
-	<div
-		style="margin-right: 200px; margin-top: 10px; color: #999999; font-family: sans-serif; text-align: right; font-size: 12px; font-weight: bold;">
-		Usuario:
-		<%=u.getNombre()%> - <a href="LogoutUsuario" title="Logout">Logout</a></div>
-	<%
-		}else{
-	%><div
-		style="margin-right: 200px; margin-top: 10px; color: #999999; font-family: sans-serif; text-align: right; font-size: 12px; font-weight: bold;">
-		<a href="LoginUsuario" title="Login">Login</a></div>
-		<%} %>
-	
+	<table align="center" width="90%">
+	<tr>
+		<td width="70%">
+			<b style="font-size: 20pt; color: gray;">Portal de Compras Web IA</b>
+		</td>
+		<td>
+			<%
+				if (u != null) {
+			%>
+			<div
+				style="margin-right: 200px; margin-top: 10px; color: #999999; font-family: sans-serif; text-align: right; font-size: 12px; font-weight: bold;">
+				Usuario:
+				<%=u.getNombre()%> - <a href="LogoutUsuario" title="Logout">Logout</a></div>
+			<%
+				}else{
+			%><div
+				style="margin-right: 200px; margin-top: 10px; color: #999999; font-family: sans-serif; text-align: right; font-size: 12px; font-weight: bold;">
+				<a href="LoginUsuario" title="Login">Login</a></div>
+				<%} %>
+		</td>
+		</tr>
+	</table>
 	<!-- Start sub-link-bar -->
-	<div id="sub-link-bar"></div>
+	<div id="sub-link-bar" ></div>
 	<!-- End sub-link-bar -->
 
 	<!-- Start wrap -->

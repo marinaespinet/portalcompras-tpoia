@@ -69,6 +69,7 @@ h1 {
 	margin-left: auto;
 	margin-right: auto;
 	width: 960px;
+	margin-top: -30px;
 }
 .sub-links {
 	display: none;

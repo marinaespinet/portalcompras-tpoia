@@ -30,7 +30,8 @@
 	<br>
 	<br>
 	<h1 class="mainTitle">Art&iacute;culos</h1>
-	<div style="margin-left: 200px;">
+	<div style="width: 1000px; background-color: #FFFFFF; margin: auto;">
+	<div style="margin-left: 10%;">
 		<form action="BusquedaArticulo" method="post">
 			<fieldset style="float: left; padding: 2em">
 				<legend style="color: #AAAAAA; font-family: sans-serif; font-size: 16px">B&uacute;squeda de art&iacute;culos</legend>
@@ -53,6 +54,7 @@
 	</div>
 
 	<jsp:include page="listadoArticulos.jsp" />
+	</div>
 	<br>
 </body>
 </html>
