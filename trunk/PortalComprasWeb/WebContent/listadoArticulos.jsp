@@ -4,7 +4,7 @@
 <%@page import="entityBean.*"%>
 <%@page import="java.util.*"%>
 		<div style="width: 960px; margin: auto; padding-top:140px; padding-bottom:20px;">
-			<table id="prods" class="tablesorter">
+			<table id="tablaArticulos" class="tablesorter">
 				<thead>
 					<tr>
 						<th>Nombre</th>
