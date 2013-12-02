@@ -3,8 +3,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="entityBean.*"%>
 <%@page import="java.util.*"%>
-
-	<div style="width: 1000px; background-color: #FFFFFF; margin: auto;">
 		<div style="width: 960px; margin: auto; padding-top:140px; padding-bottom:20px;">
 			<table id="prods" class="tablesorter">
 				<thead>
@@ -46,4 +44,3 @@
 				</tbody>
 			</table>
 		</div>
-	</div>

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="css/tablesorter.css" type="text/css" id=""
 	media="print, projection, screen" />
-<<jsp:include page="head.jsp" flush="true" />
+<jsp:include page="head.jsp" flush="true" />
 <body>
 	<jsp:include page="menu.jsp" />
 	<br>
