@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css/tabla1.css">
+<link rel="stylesheet" href="css/tablesorter.css" type="text/css" id=""
+	media="print, projection, screen" />
 <jsp:include page="head.jsp" flush="true" />
 </head>
 <body>
@@ -15,50 +16,53 @@
 	<br>
 	<br>
 	<br>
-	<h1>Historial de Compras</h1>
-	<div class="datagrid">
-		<table>
-			<thead>
-				<tr>
-					<th>Nro de Compra</th>
-					<th>Estado</th>
-					<th>Fecha</th>
-					<th>Contenido</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-					List<Venta> ventas = (List<Venta>) request.getAttribute("ventas");
-					Iterator<Venta> itPed = ventas.iterator();
-					int rotar = 0;
-					String clase = "";
-					while (itPed.hasNext()) {
-						Venta venta = itPed.next();
-						if (rotar % 2 != 0)
-							clase = "\"alt\"";
-						else
-							clase = "\"\"";
-				%>
-				<tr class=<%=clase%>>
-					<td><%=venta.getNroVenta()%></td>
-					<td><%=venta.getEstado()%></td>
-					<td><%=venta.getFecha()%></td>
-					<td>
-						<%
-							Iterator<ItemVenta> itemsPed = venta.getItemsVenta().iterator();
-								while (itemsPed.hasNext()) {
-									ItemVenta ped = itemsPed.next();
-						%> <%=ped.toString()%><br> <%
+	<h1 style="color:#444444; margin-top:-10px;">Historial de Compras</h1>
+	<div style="width: 1000px; margin: auto; background-color: #FFFFFF;">
+		<div
+			style="width: 960px; margin: auto; padding-top: 20px; padding-bottom: 20px;">
+			<table class="tablesorter">
+				<thead>
+					<tr>
+						<th>Nro de Compra</th>
+						<th>Estado</th>
+						<th>Fecha</th>
+						<th>Contenido</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						List<Venta> ventas = (List<Venta>) request.getAttribute("ventas");
+						Iterator<Venta> itPed = ventas.iterator();
+						int rotar = 0;
+						String clase = "";
+						while (itPed.hasNext()) {
+							Venta venta = itPed.next();
+							if (rotar % 2 != 0)
+								clase = "\"alt\"";
+							else
+								clase = "\"\"";
+					%>
+					<tr class=<%=clase%>>
+						<td><%=venta.getNroVenta()%></td>
+						<td><%=venta.getEstado()%></td>
+						<td><%=venta.getFecha()%></td>
+						<td>
+							<%
+								Iterator<ItemVenta> itemsPed = venta.getItemsVenta().iterator();
+									while (itemsPed.hasNext()) {
+										ItemVenta ped = itemsPed.next();
+							%> <%=ped.toString()%><br> <%
  	}
  %>
-					</td>
-				</tr>
-				<%
-					rotar++;
-					}
-				%>
-			</tbody>
-		</table>
+						</td>
+					</tr>
+					<%
+						rotar++;
+						}
+					%>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 
