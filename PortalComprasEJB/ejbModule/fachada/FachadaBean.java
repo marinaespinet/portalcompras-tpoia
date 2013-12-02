@@ -26,6 +26,7 @@ import entityBean.ConfigAsincronica;
 import entityBean.ConfigSincronica;
 import entityBean.Direccion;
 import entityBean.Electrodomestico;
+import entityBean.Moda;
 import entityBean.Usuario;
 import entityBean.Venta;
 
@@ -61,16 +62,30 @@ public class FachadaBean implements Fachada, Serializable {
 		
 		Electrodomestico a = new Electrodomestico();
 		a.setCodigo(1);
-		a.setDescripcion("asd");
+		a.setDescripcion("LavaCosas");
 		a.setFecha(FechaUtil.getFechaActual());
 		a.setFichaTecnica("ficha tecnic");
 		a.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
 		a.setMarca("marca");
 		a.setNombre("nombre");
 		a.setOrigen("origen");
-		a.setPosicion(1);
+		a.setPosicion(2);
 		a.setPrecio(50.5f);
 		adminArticulo.registrarArticulo(a);
+		
+		Moda m = new Moda();
+		m.setCodigo(2);
+		m.setDescripcion("Remera para gordos");
+		m.setFecha(FechaUtil.getFechaActual());
+		m.setColor("Roja");
+		m.setTalle("XXXXXXXL");
+		m.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
+		m.setMarca("Acme");
+		m.setNombre("Alta remera");
+		m.setOrigen("China");
+		m.setPosicion(1);
+		m.setPrecio(13.22f);
+		adminArticulo.registrarArticulo(m);
 		
 		ConfigSincronica c = new ConfigSincronica();
 		c.setActivado(true);
