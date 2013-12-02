@@ -66,12 +66,12 @@ public class AdministradorCarritoBean implements AdministradorCarrito {
 		} catch (Exception e) {
 			// no se pudo concretar la conexion con LyM asi q elimino la venta
 			// COMENTAR ESTO, SOLO PARA TEST
-			if (true) {
+			/*if (true) {
 				v.setEstado(EEstadoVenta.Aceptada.toString());
 				adminVenta.modificarVenta(v);
 				limpiarCarrito();
 				return v;
-			}
+			}*/
 			adminVenta.eliminarVenta(v);
 			throw new Exception(
 					"No se pudo realizar la compra exitosamente debido a problemas en la conexion. Vuelva a intetnarlo mas tarde");

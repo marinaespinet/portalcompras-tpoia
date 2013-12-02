@@ -19,7 +19,7 @@ import entityBean.ConfigSincronica;
 
 public class InformarSincronicoLyM  {
 
-	private static final int TIME_OUT = 5;
+	private static final int TIME_OUT = 120;
 	
 	public static String informarVenta(VentaDTO venta, ConfigSincronica conf)
 			throws Exception {

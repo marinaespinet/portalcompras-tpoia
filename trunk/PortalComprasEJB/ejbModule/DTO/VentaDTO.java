@@ -1,9 +1,6 @@
 package DTO;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -34,7 +31,7 @@ public class VentaDTO implements Serializable {
 	@XmlElement
 	private double montoTotal;
 	
-	@XmlElementWrapper(name = "items")
+	@XmlElementWrapper(name = "itemsVenta")
 	@XmlElement(name = "item")
 	private List<ItemCantidadDTO> itemsVenta;
 	
@@ -84,13 +81,6 @@ public class VentaDTO implements Serializable {
 	public VentaDTO() {
 		super();
 		this.idModulo = "7";
-		this.fecha = this.getFechaActual();
-	}
-	
-	private String getFechaActual (){
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		Date fecha = new Date(Calendar.getInstance().getTimeInMillis());
-		return format.format(fecha);		
 	}
 	
 	

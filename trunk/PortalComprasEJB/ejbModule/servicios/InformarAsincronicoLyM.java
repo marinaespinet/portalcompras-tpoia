@@ -47,7 +47,8 @@ public class InformarAsincronicoLyM {
 		String host = conf.getIp();
 		String port = conf.getPuerto();
     	String user = conf.getUser();
-		String cola = conf.getNombre();
+		//String cola = conf.getNombre();
+    	String cola = null;
 		String pass = conf.getPassword();
 		
 		if(user == null ){
@@ -59,6 +60,7 @@ public class InformarAsincronicoLyM {
     	if(cola==null){
     		cola = DEFAULT_DESTINATION;
     	}
+    	
     	
  
     	  

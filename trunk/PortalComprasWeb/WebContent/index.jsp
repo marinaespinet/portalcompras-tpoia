@@ -12,9 +12,6 @@
 	<jsp:include page="menu.jsp" />
 	<br>
 	<br>
-	<p style="font-size: 35;">
-		<b style="FONT-SIZE: xx-large; COLOR: #444444;">PORTAL DE COMPRAS</b>
-	</p>
 	<%if ( u == null) {%>
 	<table width="200px" style="background-color: #FFFFFF;" align="center">
 		<tr>
@@ -29,13 +26,13 @@
 							<tr>
 								<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Usuario(Dni):
 								</td>
-								<td><input id="usuario" type="text" name="usuario">
+								<td><input id="usuario" type="text" name="usuario" value="1234"> 
 								</td>
 							</tr>
 							<tr>
 								<td style="font-size: 14px; color: #FFFFFF; font-family: Arial;">Clave:
 								</td>
-								<td><input id="password" type="password" name="password">
+								<td><input id="password" type="password" name="password" value="1234">
 								</td>
 							</tr>
 							<tr>

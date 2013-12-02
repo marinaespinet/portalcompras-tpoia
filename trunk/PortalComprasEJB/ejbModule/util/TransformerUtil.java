@@ -35,20 +35,20 @@ public class TransformerUtil {
 	
 	public static Articulo toArticulo(ArticuloDTO aDTO) throws ParseException {
 		Articulo a = null;
-		if (aDTO.getTipo().substring(0, aDTO.getTipo().length()-2).equalsIgnoreCase("Electrodomestico")) {
+		if (aDTO.getTipo().toLowerCase().contains("electrodomestico") ) {
 			Electrodomestico e = new Electrodomestico();
 			a = e;
 			e.setFichaTecnica(aDTO.getFichaTecnica());
-		} else if (aDTO.getTipo().substring(0, aDTO.getTipo().length()-2).equalsIgnoreCase("moda")) {
+		} else if (aDTO.getTipo().toLowerCase().contains("moda") ) {
 			Moda m = new Moda();
 			a = m;
 			m.setColor(aDTO.getColor());
 			m.setTalle(aDTO.getTalle());
-		} else if (aDTO.getTipo().substring(0, aDTO.getTipo().length()-2).equalsIgnoreCase("Mueble")) {
+		} else if (aDTO.getTipo().toLowerCase().contains("mueble") ) {
 			Mueble m = new Mueble();
 			a = m;
 			m.setMaterial(aDTO.getMaterial());
-		} else if (aDTO.getTipo().substring(0, aDTO.getTipo().length()-2).equalsIgnoreCase("ninos")||aDTO.getTipo().substring(0, aDTO.getTipo().length()-2).equalsIgnoreCase("niños") ) {
+		} else if (aDTO.getTipo().toLowerCase().contains("nino") ||aDTO.getTipo().toLowerCase().contains("niño")) {
 			Nino n = new Nino();
 			a = n;
 			n.setEdadRecomendada(aDTO.getEdadRecomendada());
@@ -61,7 +61,6 @@ public class TransformerUtil {
 		a.setOrigen(aDTO.getOrigen());
 		a.setPrecio(aDTO.getPrecio());
 		a.setFecha(FechaUtil.toTimeStamp(aDTO.getFecha()));
-
 		return a;
 	}
 	
