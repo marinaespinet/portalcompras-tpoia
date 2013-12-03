@@ -30,7 +30,7 @@ import entityBean.Moda;
 import entityBean.Usuario;
 import entityBean.Venta;
 
-@Stateless 
+@Stateless
 public class FachadaBean implements Fachada, Serializable {
 	private static final long serialVersionUID = 1L;
 	@EJB
@@ -46,75 +46,103 @@ public class FachadaBean implements Fachada, Serializable {
 
 	public FachadaBean() {
 	}
-	
+
 	@PostConstruct
-	public void postConstruct(){
+	public void postConstruct() {
+
 		Usuario u = new Usuario();
 		u.setAdministrador(true);
-		u.setCoordenadaX(123124423);
-		u.setCoordenadaY(123124213);
-		u.setDireccion(new Direccion("prov", "ciud", "calle", 1,"depto"));
-		u.setDni("1234"); 
+		u.setCoordenadaX(-34.6179003d);
+		u.setCoordenadaY(-58.3874423d);
+		u.setDireccion(new Direccion("prov", "ciud", "calle", 1, "depto"));
+		u.setDni("usuario1");
 		u.setMail("sfsa@asdas.com");
-			u.setNombre("Hernan Escola");
-			u.setPassword("1234");
+		u.setNombre("Hernan Escola");
+		u.setPassword("1234");
 		adminUsuario.registrar(u);
 		
-		Electrodomestico a = new Electrodomestico();
-		a.setCodigo(1);
-		a.setDescripcion("LavaCosas");
-		a.setFecha(FechaUtil.getFechaActual());
-		a.setFichaTecnica("ficha tecnic");
-		a.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
-		a.setMarca("marca");
-		a.setNombre("nombre");
-		a.setOrigen("origen");
-		a.setPosicion(2);
-		a.setPrecio(50.5f);
-		adminArticulo.registrarArticulo(a);
+		u = new Usuario();
+		u.setAdministrador(true);
+		u.setCoordenadaX(-31.402701d);
+		u.setCoordenadaY(-64.1644477d);
+		u.setDireccion(new Direccion("prov", "ciud", "calle", 1, "depto"));
+		u.setDni("usuario5");
+		u.setMail("sfsa@asdas.com");
+		u.setNombre("usuario5");
+		u.setPassword("1234");
+		adminUsuario.registrar(u);
 		
-		Moda m = new Moda();
-		m.setCodigo(2);
-		m.setDescripcion("Remera para gordos");
-		m.setFecha(FechaUtil.getFechaActual());
-		m.setColor("Roja");
-		m.setTalle("XXXXXXXL");
-		m.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
-		m.setMarca("Acme");
-		m.setNombre("Alta remera");
-		m.setOrigen("China");
-		m.setPosicion(1);
-		m.setPrecio(13.22f);
-		adminArticulo.registrarArticulo(m);
+		u = new Usuario();
+		u.setAdministrador(true);
+		u.setCoordenadaX(-32.958522d);
+		u.setCoordenadaY(-60.6677055d);
+		u.setDireccion(new Direccion("prov", "ciud", "calle", 1, "depto"));
+		u.setDni("uusuario7");
+		u.setMail("sfsa@asdas.com");
+		u.setNombre("usuario7");
+		u.setPassword("1234");
+		adminUsuario.registrar(u);
 		
+		/*
+		Usuario u2 = new Usuario();
+		u.setAdministrador(true);
+		u.setCoordenadaX(-34.6179003d);
+		u.setCoordenadaY(-58.3874423d);
+		u.setDireccion(new Direccion("prov", "ciud", "calle", 1, "depto"));
+		u.setDni("usuario2");
+		u.setMail("sfsa@asdas.com");
+		u.setNombre("Hernan Escola");
+		u.setPassword("1234");
+		adminUsuario.registrar(u2);*/
+
+		/*
+		 * Electrodomestico a = new Electrodomestico(); a.setCodigo(1);
+		 * a.setDescripcion("LavaCosas");
+		 * a.setFecha(FechaUtil.getFechaActual());
+		 * a.setFichaTecnica("ficha tecnic");
+		 * a.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
+		 * a.setMarca("marca"); a.setNombre("nombre"); a.setOrigen("origen");
+		 * a.setPosicion(2); a.setPrecio(50.5f);
+		 * adminArticulo.registrarArticulo(a);
+		 * 
+		 * Moda m = new Moda(); m.setCodigo(2);
+		 * m.setDescripcion("Remera para gordos");
+		 * m.setFecha(FechaUtil.getFechaActual()); m.setColor("Roja");
+		 * m.setTalle("XXXXXXXL");
+		 * m.setFoto("http://www.google.com.ar/images/srpr/logo11w.png");
+		 * m.setMarca("Acme"); m.setNombre("Alta remera"); m.setOrigen("China");
+		 * m.setPosicion(1); m.setPrecio(13.22f);
+		 * adminArticulo.registrarArticulo(m);
+		 */
+
 		ConfigSincronica c = new ConfigSincronica();
 		c.setActivado(true);
 		c.setFuncionalidad(EFuncionalidad.venta.toString());
 		c.setIp("172.16.174.36");
-		c.setNombre("Logistica y Monitoreo G17");
+		c.setNombre("Logistica y Monitoreo G15");
 		c.setPuerto("8080");
 		c.setUrl("LogisticaMonitoreo/LogisticaMonitoreoWS");
 		adminConfiguracion.addConfig(c);
-		
+
 		ConfigSincronica c3 = new ConfigSincronica();
 		c3.setActivado(true);
 		c3.setFuncionalidad(EFuncionalidad.log.toString());
 		c3.setIp("172.16.174.36");
-		c3.setNombre("Logistica y Monitoreo G17");
+		c3.setNombre("Logistica y Monitoreo G15");
 		c3.setPuerto("8080");
 		c3.setUrl("LogisticaMonitoreo/LogisticaMonitoreoWS");
 		adminConfiguracion.addConfig(c3);
-		
+
 		ConfigAsincronica c2 = new ConfigAsincronica();
 		c2.setActivado(false);
 		c2.setFuncionalidad(EFuncionalidad.log.toString());
 		c2.setIp("172.16.174.36");
 		c2.setPuerto("4447");
-		c2.setNombre("Logistica y Monitoreo G17");
+		c2.setNombre("Logistica y Monitoreo G15");
 		c2.setUser("log");
 		c2.setPassword("log1234");
 		adminConfiguracion.addConfig(c2);
-		
+
 	}
 
 	@Override
@@ -217,12 +245,12 @@ public class FachadaBean implements Fachada, Serializable {
 	public List<Config> getConfigsByFuncionalidad(String funcion) {
 		return adminConfiguracion.getConfigsByFuncionalidad(funcion);
 	}
-	
+
 	@Override
 	public List<Articulo> getArticulosPorTipo(ETipoArticulo tipo) {
 		return adminArticulo.getArticulosPorTipo(tipo);
 	}
-	
+
 	@Override
 	public List<ETipoArticulo> getTipoArticulos() {
 		return adminArticulo.getTipoArticulos();

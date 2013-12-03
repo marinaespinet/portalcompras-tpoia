@@ -70,24 +70,14 @@ public class AdministradorArticuloBean implements AdministradorArticulo {
 
 	@Override
 	public void asignarRanking(List<BestSellerDTO> list) throws Exception {
-		try {
-			em.getTransaction().begin();
-
 			for (BestSellerDTO bs : list) {
 				Articulo a = buscarArticulo(bs.getcodigoArticulo());
 				if (a != null) {
+					
 					a.setPosicion(bs.getPosicion());
 				}
 				em.merge(a);
 			}
-			em.getTransaction().commit();
-		} catch (RollbackException e) {
-			e.printStackTrace();
-			throw e;
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			throw e;
-		}
 	}
 
 	@Override
