@@ -48,7 +48,7 @@ public class TransformerUtil {
 			Mueble m = new Mueble();
 			a = m;
 			m.setMaterial(aDTO.getMaterial());
-		} else if (aDTO.getTipo().toLowerCase().contains("nino") ||aDTO.getTipo().toLowerCase().contains("niño")) {
+		} else if (aDTO.getTipo().toLowerCase().contains("nino") ||aDTO.getTipo().toLowerCase().contains("niño") ||aDTO.getTipo().toLowerCase().contains("infantil")) {
 			Nino n = new Nino();
 			a = n;
 			n.setEdadRecomendada(aDTO.getEdadRecomendada());
